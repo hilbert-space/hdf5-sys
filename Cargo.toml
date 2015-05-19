@@ -1,0 +1,9 @@
+[package]
+name = "hdf5-sys"
+version = "0.0.1"
+authors = ["Ivan Ukhov <ivan.ukhov@gmail.com>"]
+license = "MIT"
+repository = "https://github.com/stainless-steel/hdf5-sys"
+homepage = "https://github.com/stainless-steel/hdf5-sys"
+documentation = "https://stainless-steel.github.io/hdf5-sys"
+description = "The package provides bindings to HDF5."
