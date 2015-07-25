@@ -13,6 +13,7 @@ pub const H5F_ACC_CREAT:  c_uint = 0x0010;
 extern "C" {
     pub fn H5Fcreate(filename: *const c_char, flags: c_uint, create_plist: hid_t,
                      access_plist: hid_t) -> hid_t;
+
     pub fn H5Fopen(filename: *const c_char, flags: c_uint, access_plist: hid_t) -> hid_t;
     pub fn H5Fclose(file_id: hid_t) -> herr_t;
 }

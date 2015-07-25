@@ -2,14 +2,20 @@
 
 extern crate libc;
 
+mod H5Dpublic;
 mod H5Fpublic;
 mod H5Ipublic;
+mod H5Lpublic;
 mod H5Ppublic;
+mod H5Tpublic;
 mod H5public;
 
+pub use H5Dpublic::*;
 pub use H5Fpublic::*;
 pub use H5Ipublic::*;
+pub use H5Lpublic::*;
 pub use H5Ppublic::*;
+pub use H5Tpublic::*;
 pub use H5public::*;
 
 #[cfg(test)]
