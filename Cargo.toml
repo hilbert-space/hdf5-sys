@@ -9,3 +9,6 @@ documentation = "https://stainless-steel.github.io/hdf5-sys"
 description = "The package provides bindings to HDF5."
 build = "build.rs"
 links = "hdf5"
+
+[dependencies]
+libc = "*"

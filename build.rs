@@ -28,16 +28,21 @@ fn main() {
     let build = output.join("build");
     let install = output.join("install");
 
-    ok!(fs::create_dir_all(&build));
-    ok!(fs::create_dir_all(&install));
+    if fs::metadata(&build).is_err() {
+        ok!(fs::create_dir_all(&build));
+        run!(cmd!(source.join("configure")).current_dir(&build)
+                                           .arg("--enable-debug=no")
+                                           .arg("--enable-production")
+                                           .arg("--enable-threadsafe")
+                                           .arg(&format!("--prefix={}", install.display())));
+    }
 
-    run!(cmd!(source.join("configure")).current_dir(&build)
-                                       .arg("--enable-threadsafe")
-                                       .arg(&format!("--prefix={}", install.display())));
-
-    run!(cmd!("make").current_dir(&build)
-                     .arg(&format!("-j{}", &get!("NUM_JOBS")))
-                     .arg("install"));
+    if fs::metadata(&install).is_err() {
+        ok!(fs::create_dir_all(&install));
+        run!(cmd!("make").current_dir(&build)
+                         .arg(&format!("-j{}", &get!("NUM_JOBS")))
+                         .arg("install"));
+    }
 
     println!("cargo:rustc-link-lib=dylib=hdf5");
     println!("cargo:rustc-link-search={}", install.join("lib").display());
