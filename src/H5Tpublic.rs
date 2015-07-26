@@ -35,6 +35,7 @@ extern "C" {
 }
 
 extern "C" {
+    pub static H5T_C_S1_g: hid_t;
     pub static H5T_NATIVE_FLOAT_g: hid_t;
     pub static H5T_NATIVE_DOUBLE_g: hid_t;
     pub static H5T_NATIVE_INT8_g: hid_t;
@@ -47,13 +48,14 @@ extern "C" {
     pub static H5T_NATIVE_UINT64_g: hid_t;
 }
 
-pub use self::H5T_NATIVE_FLOAT_g  as H5T_NATIVE_FLOAT;
+pub use self::H5T_C_S1_g as H5T_C_S1;
+pub use self::H5T_NATIVE_FLOAT_g as H5T_NATIVE_FLOAT;
 pub use self::H5T_NATIVE_DOUBLE_g as H5T_NATIVE_DOUBLE;
-pub use self::H5T_NATIVE_INT8_g   as H5T_NATIVE_INT8;
-pub use self::H5T_NATIVE_UINT8_g  as H5T_NATIVE_UINT8;
-pub use self::H5T_NATIVE_INT16_g  as H5T_NATIVE_INT16;
+pub use self::H5T_NATIVE_INT8_g as H5T_NATIVE_INT8;
+pub use self::H5T_NATIVE_UINT8_g as H5T_NATIVE_UINT8;
+pub use self::H5T_NATIVE_INT16_g as H5T_NATIVE_INT16;
 pub use self::H5T_NATIVE_UINT16_g as H5T_NATIVE_UINT16;
-pub use self::H5T_NATIVE_INT32_g  as H5T_NATIVE_INT32;
+pub use self::H5T_NATIVE_INT32_g as H5T_NATIVE_INT32;
 pub use self::H5T_NATIVE_UINT32_g as H5T_NATIVE_UINT32;
-pub use self::H5T_NATIVE_INT64_g  as H5T_NATIVE_INT64;
+pub use self::H5T_NATIVE_INT64_g as H5T_NATIVE_INT64;
 pub use self::H5T_NATIVE_UINT64_g as H5T_NATIVE_UINT64;
