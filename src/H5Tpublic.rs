@@ -25,6 +25,7 @@ pub use self::H5T_class_t::*;
 
 extern "C" {
     pub fn H5Tcreate(typo: H5T_class_t, size: size_t) -> hid_t;
+    pub fn H5Tclose(type_id: hid_t) -> herr_t;
     pub fn H5Tvlen_create(base_id: hid_t) -> hid_t;
 
     pub fn H5Tinsert(parent_id: hid_t, name: *const c_char, offset: size_t, member_id: hid_t)
