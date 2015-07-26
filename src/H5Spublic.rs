@@ -1,7 +1,7 @@
 use libc::c_int;
 
 use H5Ipublic::hid_t;
-use H5public::hsize_t;
+use H5public::{herr_t, hsize_t};
 
 pub const H5S_ALL: hid_t = 0;
 
