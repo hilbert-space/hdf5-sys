@@ -32,6 +32,7 @@ extern "C" {
                      -> herr_t;
 
     pub fn H5Tarray_create2(base_id: hid_t, ndims: c_uint, dim: *const hsize_t) -> hid_t;
+    pub fn H5Tget_size(type_id: hid_t) -> size_t;
 }
 
 extern "C" {
