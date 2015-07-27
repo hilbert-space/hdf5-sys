@@ -1,3 +1,5 @@
+extern crate pkg_config;
+
 use std::path::PathBuf;
 use std::{env, fs, process};
 
@@ -22,6 +24,10 @@ macro_rules! run(
 );
 
 fn main() {
+    if pkg_config::find_library("hdf5").is_ok() {
+        return;
+    }
+
     let source = PathBuf::from(&get!("CARGO_MANIFEST_DIR")).join("source");
     let output = PathBuf::from(&get!("OUT_DIR"));
 

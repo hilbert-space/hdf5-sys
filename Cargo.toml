@@ -13,3 +13,6 @@ exclude = ["source/tools/testfiles/*", "source/tools/*/testfiles/*"]
 
 [dependencies]
 libc = "*"
+
+[build-dependencies]
+pkg-config = "*"
