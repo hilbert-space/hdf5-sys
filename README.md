@@ -12,7 +12,7 @@ The package provides bindings to [HDF5][1].
 
 [1]: http://www.hdfgroup.org/HDF5
 
-[version-img]: https://img.shields.io/crates/v/hdf5-sys.svg
+[version-img]: http://stainless-steel.github.io/images/crates.svg
 [version-url]: https://crates.io/crates/hdf5-sys
 [status-img]: https://travis-ci.org/stainless-steel/hdf5-sys.svg?branch=master
 [status-url]: https://travis-ci.org/stainless-steel/hdf5-sys
