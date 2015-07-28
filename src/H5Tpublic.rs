@@ -23,6 +23,29 @@ pub enum H5T_class_t {
 }
 pub use self::H5T_class_t::*;
 
+#[derive(Clone, Copy, Debug)]
+#[repr(C)]
+pub enum H5T_cset_t {
+    H5T_CSET_ERROR = -1,
+    H5T_CSET_ASCII = 0,
+    H5T_CSET_UTF8 = 1,
+    H5T_CSET_RESERVED_2 = 2,
+    H5T_CSET_RESERVED_3 = 3,
+    H5T_CSET_RESERVED_4 = 4,
+    H5T_CSET_RESERVED_5 = 5,
+    H5T_CSET_RESERVED_6 = 6,
+    H5T_CSET_RESERVED_7 = 7,
+    H5T_CSET_RESERVED_8 = 8,
+    H5T_CSET_RESERVED_9 = 9,
+    H5T_CSET_RESERVED_10 = 10,
+    H5T_CSET_RESERVED_11 = 11,
+    H5T_CSET_RESERVED_12 = 12,
+    H5T_CSET_RESERVED_13 = 13,
+    H5T_CSET_RESERVED_14 = 14,
+    H5T_CSET_RESERVED_15 = 15,
+}
+pub use self::H5T_cset_t::*;
+
 extern "C" {
     pub fn H5Tcreate(typo: H5T_class_t, size: size_t) -> hid_t;
     pub fn H5Tcopy(type_id: hid_t) -> hid_t;
@@ -34,7 +57,9 @@ extern "C" {
 
     pub fn H5Tarray_create2(base_id: hid_t, ndims: c_uint, dim: *const hsize_t) -> hid_t;
     pub fn H5Tget_size(type_id: hid_t) -> size_t;
+    pub fn H5Tget_cset(type_id: hid_t) -> H5T_cset_t;
     pub fn H5Tset_size(type_id: hid_t, size: size_t) -> herr_t;
+    pub fn H5Tset_cset(type_id: hid_t, cset: H5T_cset_t) -> herr_t;
 }
 
 extern "C" {
