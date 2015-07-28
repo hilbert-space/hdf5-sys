@@ -20,6 +20,7 @@ pub enum H5S_seloper_t {
     H5S_SELECT_PREPEND,
     H5S_SELECT_INVALID,
 }
+pub use self::H5S_seloper_t::*;
 
 extern "C" {
     pub fn H5Screate_simple(rank: c_int, current_dims: *const hsize_t,
