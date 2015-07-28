@@ -25,6 +25,7 @@ pub use self::H5T_class_t::*;
 
 extern "C" {
     pub fn H5Tcreate(typo: H5T_class_t, size: size_t) -> hid_t;
+    pub fn H5Tcopy(type_id: hid_t) -> hid_t;
     pub fn H5Tclose(type_id: hid_t) -> herr_t;
     pub fn H5Tvlen_create(base_id: hid_t) -> hid_t;
 
@@ -33,6 +34,7 @@ extern "C" {
 
     pub fn H5Tarray_create2(base_id: hid_t, ndims: c_uint, dim: *const hsize_t) -> hid_t;
     pub fn H5Tget_size(type_id: hid_t) -> size_t;
+    pub fn H5Tset_size(type_id: hid_t, size: size_t) -> herr_t;
 }
 
 extern "C" {
