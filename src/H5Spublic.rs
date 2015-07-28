@@ -1,10 +1,10 @@
 use libc::c_int;
 
 use H5Ipublic::hid_t;
-use H5public::{herr_t, hsize_t};
+use H5public::{herr_t, hsize_t, hssize_t};
 
 pub const H5S_ALL: hid_t = 0;
-pub const H5S_UNLIMITED: hid_t = !0;
+pub const H5S_UNLIMITED: hsize_t = (-1 as hssize_t) as hsize_t;
 
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]
