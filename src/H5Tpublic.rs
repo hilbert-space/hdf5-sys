@@ -1,7 +1,7 @@
 use libc::{c_char, c_uint, size_t};
 
 use H5Ipublic::hid_t;
-use H5public::{herr_t, hsize_t};
+use H5public::{herr_t, hsize_t, htri_t};
 
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]
@@ -50,11 +50,12 @@ extern "C" {
     pub fn H5Tcreate(typo: H5T_class_t, size: size_t) -> hid_t;
     pub fn H5Tcopy(type_id: hid_t) -> hid_t;
     pub fn H5Tclose(type_id: hid_t) -> herr_t;
-    pub fn H5Tvlen_create(base_id: hid_t) -> hid_t;
+    pub fn H5Tequal(type1_id: hid_t, type2_id: hid_t) -> htri_t;
 
     pub fn H5Tinsert(parent_id: hid_t, name: *const c_char, offset: size_t, member_id: hid_t)
                      -> herr_t;
 
+    pub fn H5Tvlen_create(base_id: hid_t) -> hid_t;
     pub fn H5Tarray_create2(base_id: hid_t, ndims: c_uint, dim: *const hsize_t) -> hid_t;
     pub fn H5Tget_size(type_id: hid_t) -> size_t;
     pub fn H5Tget_cset(type_id: hid_t) -> H5T_cset_t;
