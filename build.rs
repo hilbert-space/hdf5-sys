@@ -37,6 +37,7 @@ fn main() {
     if fs::metadata(&build).is_err() {
         ok!(fs::create_dir_all(&build));
         run!(cmd!(source.join("configure")).current_dir(&build)
+                                           .arg("--disable-hl")
                                            .arg("--enable-debug=no")
                                            .arg("--enable-production")
                                            .arg("--enable-threadsafe")
