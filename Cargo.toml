@@ -1,7 +1,10 @@
 [package]
 name = "hdf5-sys"
 version = "0.2.7"
-authors = ["Ivan Ukhov <ivan.ukhov@gmail.com>"]
+authors = [
+  "Gustav Larsson <gustav.m.larsson@gmail.com>",
+  "Ivan Ukhov <ivan.ukhov@gmail.com>",
+]
 license = "MIT"
 repository = "https://github.com/stainless-steel/hdf5-sys"
 homepage = "https://github.com/stainless-steel/hdf5-sys"
