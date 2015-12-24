@@ -1,8 +1,8 @@
 use libc::{c_void, c_char, c_int, c_uint, c_double, size_t, ssize_t};
 
-use H5Ipublic::hid_t;
-use H5public::{herr_t, hbool_t, hsize_t, hssize_t, htri_t, H5_ih_info_t};
 use H5ACpublic::H5AC_cache_config_t;
+use H5Ipublic::hid_t;
+use H5public::{H5_ih_info_t, hbool_t, herr_t, hsize_t, hssize_t, htri_t};
 
 pub const H5F_ACC_RDONLY: c_uint = 0x0000;
 pub const H5F_ACC_RDWR: c_uint = 0x0001;

@@ -1,4 +1,4 @@
-use libc::{c_char, c_void, c_uint, size_t, ssize_t, FILE};
+use libc::{FILE, c_char, c_void, c_uint, size_t, ssize_t};
 
 use H5Ipublic::hid_t;
 use H5public::herr_t;

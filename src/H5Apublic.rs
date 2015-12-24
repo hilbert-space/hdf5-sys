@@ -1,8 +1,9 @@
 use libc::{c_char, c_void, size_t, ssize_t};
+
 use H5Ipublic::hid_t;
 use H5Opublic::H5O_msg_crt_idx_t;
 use H5Tpublic::H5T_cset_t;
-use H5public::{herr_t, htri_t, hsize_t, hbool_t, H5_index_t, H5_iter_order_t};
+use H5public::{H5_index_t, H5_iter_order_t, hbool_t, herr_t, hsize_t, htri_t};
 
 #[repr(C)]
 pub struct H5A_info_t {

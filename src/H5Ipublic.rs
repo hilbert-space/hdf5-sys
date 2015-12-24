@@ -1,5 +1,6 @@
-use libc::{c_int, c_uint, c_char, c_void, size_t, ssize_t};
-use H5public::{herr_t, htri_t, hbool_t, hsize_t};
+use libc::{c_char, c_int, c_uint, c_void, size_t, ssize_t};
+
+use H5public::{hbool_t, herr_t, htri_t, hsize_t};
 
 pub type hid_t = c_int;
 

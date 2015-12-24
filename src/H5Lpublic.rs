@@ -2,7 +2,7 @@ use libc::{c_char, c_int, c_uint, c_void, size_t, ssize_t};
 
 use H5Ipublic::hid_t;
 use H5Tpublic::H5T_cset_t;
-use H5public::{herr_t, htri_t, hbool_t, hsize_t, haddr_t, H5_index_t, H5_iter_order_t};
+use H5public::{H5_index_t, H5_iter_order_t, haddr_t, hbool_t, herr_t, hsize_t, htri_t};
 
 pub type H5L_create_func_t = extern fn(*const c_char, hid_t, *const c_void, size_t, hid_t);
 pub type H5L_move_func_t = extern fn(*const c_char, hid_t, *const c_void, size_t);

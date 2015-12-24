@@ -1,6 +1,7 @@
 use libc::{c_void, size_t};
-use H5public::herr_t;
+
 use H5Fpublic::H5F_mem_t;
+use H5public::herr_t;
 
 pub type H5FD_mem_t = H5F_mem_t;
 

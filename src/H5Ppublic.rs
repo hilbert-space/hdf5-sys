@@ -1,16 +1,16 @@
-use libc::{c_char, c_int, c_uint, c_void, c_double, off_t, size_t, ssize_t};
+use libc::{c_char, c_double, c_int, c_uint, c_void, off_t, size_t, ssize_t};
 
-use H5Dpublic::{H5D_layout_t, H5D_fill_value_t, H5D_alloc_time_t, H5D_fill_time_t};
+use H5ACpublic::H5AC_cache_config_t;
+use H5Dpublic::{H5D_alloc_time_t, H5D_fill_time_t, H5D_fill_value_t, H5D_layout_t};
+use H5FDpublic::{H5FD_file_image_callbacks_t, H5FD_mem_t};
 use H5Fpublic::{H5F_close_degree_t, H5F_libver_t};
 use H5Ipublic::hid_t;
 use H5Lpublic::H5L_elink_traverse_t;
+use H5MMpublic::{H5MM_allocate_t, H5MM_free_t};
 use H5Opublic::H5O_mcdt_search_cb_t;
 use H5Tpublic::{H5T_conv_except_func_t, H5T_cset_t};
-use H5Zpublic::{H5Z_filter_t, H5Z_SO_scale_type_t, H5Z_EDC_t, H5Z_filter_func_t};
-use H5FDpublic::{H5FD_mem_t, H5FD_file_image_callbacks_t};
-use H5ACpublic::H5AC_cache_config_t;
-use H5MMpublic::{H5MM_allocate_t, H5MM_free_t};
-use H5public::{herr_t, htri_t, hsize_t, hbool_t};
+use H5Zpublic::{H5Z_EDC_t, H5Z_SO_scale_type_t, H5Z_filter_func_t, H5Z_filter_t};
+use H5public::{hbool_t, herr_t, htri_t, hsize_t};
 
 pub const H5P_DEFAULT: hid_t = 0;
 

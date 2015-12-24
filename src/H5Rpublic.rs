@@ -1,12 +1,13 @@
 use libc::{c_char, c_void, size_t, ssize_t};
+
 use H5Ipublic::hid_t;
-use H5public::herr_t;
 use H5Opublic::H5O_type_t;
+use H5public::herr_t;
 
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]
 pub enum H5R_type_t {
-    H5R_BADTYPE = (-1),
+    H5R_BADTYPE = -1,
     H5R_OBJECT,
     H5R_DATASET_REGION,
     H5R_MAXTYPE,

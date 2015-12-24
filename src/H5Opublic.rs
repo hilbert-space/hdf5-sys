@@ -1,6 +1,7 @@
 use libc::{c_char, c_uint, c_ulong, c_void, size_t, ssize_t, time_t};
-use H5public::{herr_t, htri_t, hsize_t, haddr_t, H5_index_t, H5_iter_order_t, H5_ih_info_t};
+
 use H5Ipublic::hid_t;
+use H5public::{H5_ih_info_t, H5_index_t, H5_iter_order_t, haddr_t, herr_t, hsize_t, htri_t};
 
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]

@@ -1,6 +1,7 @@
-use libc::{c_char, c_int, c_long, c_double, size_t};
+use libc::{c_char, c_double, c_int, c_long, size_t};
+
+use H5Cpublic::{H5C_cache_decr_mode, H5C_cache_flash_incr_mode, H5C_cache_incr_mode};
 use H5public::hbool_t;
-use H5Cpublic::{H5C_cache_incr_mode, H5C_cache_decr_mode, H5C_cache_flash_incr_mode};
 
 #[repr(C)]
 pub struct H5AC_cache_config_t {
