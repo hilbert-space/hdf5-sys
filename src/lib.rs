@@ -1,4 +1,4 @@
-#![allow(dead_code, non_camel_case_types, non_snake_case)]
+#![allow(non_camel_case_types, non_snake_case)]
 
 extern crate libc;
 
@@ -23,16 +23,22 @@ mod H5Zpublic;
 mod H5public;
 
 pub use H5ACpublic::*;
+pub use H5Apublic::*;
 pub use H5Cpublic::*;
 pub use H5Dpublic::*;
 pub use H5Epublic::*;
+pub use H5FDpublic::*;
 pub use H5Fpublic::*;
 pub use H5Gpublic::*;
 pub use H5Ipublic::*;
 pub use H5Lpublic::*;
+pub use H5Opublic::*;
+pub use H5PLpublic::*;
 pub use H5Ppublic::*;
+pub use H5Rpublic::*;
 pub use H5Spublic::*;
 pub use H5Tpublic::*;
+pub use H5Zpublic::*;
 pub use H5public::*;
 
 #[cfg(test)]
