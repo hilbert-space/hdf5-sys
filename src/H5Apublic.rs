@@ -34,14 +34,14 @@ extern "C" {
     pub fn H5Aget_create_plist(attr_id: hid_t) -> hid_t;
     pub fn H5Aget_name(attr_id: hid_t, buf_size: size_t, buf: *mut c_char) -> ssize_t;
     pub fn H5Aget_name_by_idx(loc_id: hid_t, obj_name: *const c_char, idx_type: H5_index_t,
-                              order: H5_iter_order_t, n: hsize_t, name: *mut c_char/*out*/, size: size_t,
+                              order: H5_iter_order_t, n: hsize_t, name: *mut c_char, size: size_t,
                               lapl_id: hid_t) -> ssize_t;
     pub fn H5Aget_storage_size(attr_id: hid_t) -> hsize_t;
-    pub fn H5Aget_info(attr_id: hid_t, ainfo: *mut H5A_info_t/*out*/) -> herr_t;
+    pub fn H5Aget_info(attr_id: hid_t, ainfo: *mut H5A_info_t) -> herr_t;
     pub fn H5Aget_info_by_name(loc_id: hid_t, obj_name: *const c_char, attr_name: *const c_char,
-                               ainfo: *mut H5A_info_t/*out*/, lapl_id: hid_t) -> herr_t;
+                               ainfo: *mut H5A_info_t, lapl_id: hid_t) -> herr_t;
     pub fn H5Aget_info_by_idx(loc_id: hid_t, obj_name: *const c_char, idx_type: H5_index_t,
-                              order: H5_iter_order_t, n: hsize_t, ainfo: *mut H5A_info_t/*out*/,
+                              order: H5_iter_order_t, n: hsize_t, ainfo: *mut H5A_info_t,
                               lapl_id: hid_t) -> herr_t;
     pub fn H5Arename(loc_id: hid_t, old_name: *const c_char, new_name: *const c_char) -> herr_t;
     pub fn H5Arename_by_name(loc_id: hid_t, obj_name: *const c_char, old_attr_name: *const c_char,

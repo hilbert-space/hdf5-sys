@@ -132,28 +132,28 @@ extern "C" {
     pub fn H5Pset_filter(plist_id: hid_t, filter: H5Z_filter_t, flags: c_uint, cd_nelmts: size_t,
                          c_values: *const c_uint) -> herr_t;
     pub fn H5Pget_nfilters(plist_id: hid_t) -> c_int;
-    pub fn H5Pget_filter2(plist_id: hid_t, filter: c_uint, flags: *mut c_uint/*out*/,
-                          cd_nelmts: *mut size_t/*out*/, cd_values: *mut c_uint/*out*/,
+    pub fn H5Pget_filter2(plist_id: hid_t, filter: c_uint, flags: *mut c_uint,
+                          cd_nelmts: *mut size_t, cd_values: *mut c_uint,
                           namelen: size_t, name: *mut c_char,
-                          filter_config: *mut c_uint/*out*/) -> H5Z_filter_t;
-    pub fn H5Pget_filter_by_id2(plist_id: hid_t, id: H5Z_filter_t, flags: *mut c_uint/*out*/,
-                                cd_nelmts: *mut size_t/*out*/, cd_values: *mut c_uint/*out*/,
-                                namelen: size_t, name: *mut c_char/*out*/,
-                                filter_config: *mut c_uint/*out*/) -> herr_t;
+                          filter_config: *mut c_uint) -> H5Z_filter_t;
+    pub fn H5Pget_filter_by_id2(plist_id: hid_t, id: H5Z_filter_t, flags: *mut c_uint,
+                                cd_nelmts: *mut size_t, cd_values: *mut c_uint,
+                                namelen: size_t, name: *mut c_char,
+                                filter_config: *mut c_uint) -> herr_t;
     pub fn H5Pall_filters_avail(plist_id: hid_t) -> htri_t;
     pub fn H5Premove_filter(plist_id: hid_t, filter: H5Z_filter_t) -> herr_t;
     pub fn H5Pset_deflate(plist_id: hid_t, aggression: c_uint) -> herr_t;
     pub fn H5Pset_fletcher32(plist_id: hid_t) -> herr_t;
-    pub fn H5Pget_version(plist_id: hid_t, boot: *mut c_uint/*out*/, freelist: *mut c_uint/*out*/,
-                          stab: *mut c_uint/*out*/, shhdr: *mut c_uint/*out*/) -> herr_t;
+    pub fn H5Pget_version(plist_id: hid_t, boot: *mut c_uint, freelist: *mut c_uint,
+                          stab: *mut c_uint, shhdr: *mut c_uint) -> herr_t;
     pub fn H5Pset_userblock(plist_id: hid_t, size: hsize_t) -> herr_t;
     pub fn H5Pget_userblock(plist_id: hid_t, size: *mut hsize_t) -> herr_t;
     pub fn H5Pset_sizes(plist_id: hid_t, sizeof_addr: size_t, sizeof_size: size_t) -> herr_t;
-    pub fn H5Pget_sizes(plist_id: hid_t, sizeof_addr: *mut size_t/*out*/, sizeof_size: *mut size_t/*out*/) -> herr_t;
+    pub fn H5Pget_sizes(plist_id: hid_t, sizeof_addr: *mut size_t, sizeof_size: *mut size_t) -> herr_t;
     pub fn H5Pset_sym_k(plist_id: hid_t, ik: c_uint, lk: c_uint) -> herr_t;
-    pub fn H5Pget_sym_k(plist_id: hid_t, ik: *mut c_uint/*out*/, lk: *mut c_uint/*out*/) -> herr_t;
+    pub fn H5Pget_sym_k(plist_id: hid_t, ik: *mut c_uint, lk: *mut c_uint) -> herr_t;
     pub fn H5Pset_istore_k(plist_id: hid_t, ik: c_uint) -> herr_t;
-    pub fn H5Pget_istore_k(plist_id: hid_t, ik: *mut c_uint/*out*/) -> herr_t;
+    pub fn H5Pget_istore_k(plist_id: hid_t, ik: *mut c_uint) -> herr_t;
     pub fn H5Pset_shared_mesg_nindexes(plist_id: hid_t, nindexes: c_uint) -> herr_t;
     pub fn H5Pget_shared_mesg_nindexes(plist_id: hid_t, nindexes: *mut c_uint) -> herr_t;
     pub fn H5Pset_shared_mesg_index(plist_id: hid_t, index_num: c_uint, mesg_type_flags: c_uint,
@@ -164,8 +164,8 @@ extern "C" {
     pub fn H5Pget_shared_mesg_phase_change(plist_id: hid_t, max_list: *mut c_uint,
                                            min_btree: *mut c_uint) -> herr_t;
     pub fn H5Pset_alignment(fapl_id: hid_t, threshold: hsize_t, alignment: hsize_t) -> herr_t;
-    pub fn H5Pget_alignment(fapl_id: hid_t, threshold: *mut hsize_t/*out*/,
-                            alignment: *mut hsize_t/*out*/) -> herr_t;
+    pub fn H5Pget_alignment(fapl_id: hid_t, threshold: *mut hsize_t,
+                            alignment: *mut hsize_t) -> herr_t;
     pub fn H5Pset_driver(plist_id: hid_t, driver_id: hid_t, driver_info: *const c_void) -> herr_t;
     pub fn H5Pget_driver(plist_id: hid_t) -> hid_t;
     pub fn H5Pget_driver_info(plist_id: hid_t) -> *const c_void;
@@ -175,20 +175,20 @@ extern "C" {
     pub fn H5Pget_multi_type(fapl_id: hid_t, data_type: *mut H5FD_mem_t) -> herr_t;
     pub fn H5Pset_cache(plist_id: hid_t, mdc_nelmts: c_int, rdcc_nslots: size_t, rdcc_nbytes: size_t,
                         rdcc_w0: c_double) -> herr_t;
-    pub fn H5Pget_cache(plist_id: hid_t, mdc_nelmts: *mut c_int/*out*/, rdcc_nslots: *mut size_t/*out*/,
-                        rdcc_nbytes: *mut size_t/*out*/, rdcc_w0: *mut c_double) -> herr_t;
+    pub fn H5Pget_cache(plist_id: hid_t, mdc_nelmts: *mut c_int, rdcc_nslots: *mut size_t,
+                        rdcc_nbytes: *mut size_t, rdcc_w0: *mut c_double) -> herr_t;
     pub fn H5Pset_mdc_config(plist_id: hid_t, config_ptr: *mut H5AC_cache_config_t) -> herr_t;
     pub fn H5Pget_mdc_config(plist_id: hid_t, config_ptr: *const H5AC_cache_config_t) -> herr_t;
     pub fn H5Pset_gc_references(fapl_id: hid_t, gc_ref: c_uint) -> herr_t;
-    pub fn H5Pget_gc_references(fapl_id: hid_t, gc_ref: *mut c_uint/*out*/) -> herr_t;
+    pub fn H5Pget_gc_references(fapl_id: hid_t, gc_ref: *mut c_uint) -> herr_t;
     pub fn H5Pset_fclose_degree(fapl_id: hid_t, degree: H5F_close_degree_t) -> herr_t;
     pub fn H5Pget_fclose_degree(fapl_id: hid_t, degree: *mut H5F_close_degree_t) -> herr_t;
     pub fn H5Pset_meta_block_size(fapl_id: hid_t, size: hsize_t) -> herr_t;
-    pub fn H5Pget_meta_block_size(fapl_id: hid_t, size: *mut hsize_t/*out*/) -> herr_t;
+    pub fn H5Pget_meta_block_size(fapl_id: hid_t, size: *mut hsize_t) -> herr_t;
     pub fn H5Pset_sieve_buf_size(fapl_id: hid_t, size: size_t) -> herr_t;
-    pub fn H5Pget_sieve_buf_size(fapl_id: hid_t, size: *mut size_t/*out*/) -> herr_t;
+    pub fn H5Pget_sieve_buf_size(fapl_id: hid_t, size: *mut size_t) -> herr_t;
     pub fn H5Pset_small_data_block_size(fapl_id: hid_t, size: hsize_t) -> herr_t;
-    pub fn H5Pget_small_data_block_size(fapl_id: hid_t, size: *mut hsize_t/*out*/) -> herr_t;
+    pub fn H5Pget_small_data_block_size(fapl_id: hid_t, size: *mut hsize_t) -> herr_t;
     pub fn H5Pset_libver_bounds(plist_id: hid_t, low: H5F_libver_t, high: H5F_libver_t) -> herr_t;
     pub fn H5Pget_libver_bounds(plist_id: hid_t, low: *mut H5F_libver_t, high: *mut H5F_libver_t) -> herr_t;
     pub fn H5Pset_elink_file_cache_size(plist_id: hid_t, efc_size: c_uint) -> herr_t;
@@ -202,44 +202,44 @@ extern "C" {
     pub fn H5Pset_layout(plist_id: hid_t, layout: H5D_layout_t) -> herr_t;
     pub fn H5Pget_layout(plist_id: hid_t) -> H5D_layout_t;
     pub fn H5Pset_chunk(plist_id: hid_t, ndims: c_int, dim: *const hsize_t) -> herr_t;
-    pub fn H5Pget_chunk(plist_id: hid_t, max_ndims: c_int, dim: *mut hsize_t/*out*/) -> c_int;
+    pub fn H5Pget_chunk(plist_id: hid_t, max_ndims: c_int, dim: *mut hsize_t) -> c_int;
     pub fn H5Pset_external(plist_id: hid_t, name: *const c_char, offset: off_t, size: hsize_t) -> herr_t;
     pub fn H5Pget_external_count(plist_id: hid_t) -> c_int;
-    pub fn H5Pget_external(plist_id: hid_t, idx: c_uint, name_size: size_t, name: *mut c_char/*out*/,
-                           offset: *mut off_t/*out*/, size: *mut hsize_t/*out*/) -> herr_t;
+    pub fn H5Pget_external(plist_id: hid_t, idx: c_uint, name_size: size_t, name: *mut c_char,
+                           offset: *mut off_t, size: *mut hsize_t) -> herr_t;
     pub fn H5Pset_szip(plist_id: hid_t, options_mask: c_uint, pixels_per_block: c_uint) -> herr_t;
     pub fn H5Pset_shuffle(plist_id: hid_t) -> herr_t;
     pub fn H5Pset_nbit(plist_id: hid_t) -> herr_t;
     pub fn H5Pset_scaleoffset(plist_id: hid_t, scale_type: H5Z_SO_scale_type_t, scale_factor: c_int) -> herr_t;
     pub fn H5Pset_fill_value(plist_id: hid_t, type_id: hid_t, value: *const c_void) -> herr_t;
-    pub fn H5Pget_fill_value(plist_id: hid_t, type_id: hid_t, value: *mut c_void/*out*/) -> herr_t;
+    pub fn H5Pget_fill_value(plist_id: hid_t, type_id: hid_t, value: *mut c_void) -> herr_t;
     pub fn H5Pfill_value_defined(plist: hid_t, status: *mut H5D_fill_value_t) -> herr_t;
     pub fn H5Pset_alloc_time(plist_id: hid_t, alloc_time: H5D_alloc_time_t) -> herr_t;
-    pub fn H5Pget_alloc_time(plist_id: hid_t, alloc_time: *mut H5D_alloc_time_t/*out*/) -> herr_t;
+    pub fn H5Pget_alloc_time(plist_id: hid_t, alloc_time: *mut H5D_alloc_time_t) -> herr_t;
     pub fn H5Pset_fill_time(plist_id: hid_t, fill_time: H5D_fill_time_t) -> herr_t;
-    pub fn H5Pget_fill_time(plist_id: hid_t, fill_time: *mut H5D_fill_time_t/*out*/) -> herr_t;
+    pub fn H5Pget_fill_time(plist_id: hid_t, fill_time: *mut H5D_fill_time_t) -> herr_t;
     pub fn H5Pset_chunk_cache(dapl_id: hid_t, rdcc_nslots: size_t, rdcc_nbytes: size_t, rdcc_w0: c_double) -> herr_t;
-    pub fn H5Pget_chunk_cache(dapl_id: hid_t, rdcc_nslots: *mut size_t/*out*/, rdcc_nbytes: *mut size_t/*out*/,
-                              rdcc_w0: *mut c_double/*out*/) -> herr_t;
+    pub fn H5Pget_chunk_cache(dapl_id: hid_t, rdcc_nslots: *mut size_t, rdcc_nbytes: *mut size_t,
+                              rdcc_w0: *mut c_double) -> herr_t;
     pub fn H5Pset_data_transform(plist_id: hid_t, expression: *const c_char) -> herr_t;
-    pub fn H5Pget_data_transform(plist_id: hid_t, expression: *mut c_char/*out*/, size: size_t) -> ssize_t;
+    pub fn H5Pget_data_transform(plist_id: hid_t, expression: *mut c_char, size: size_t) -> ssize_t;
     pub fn H5Pset_buffer(plist_id: hid_t, size: size_t, tconv: *const c_void, bkg: *const c_void) -> herr_t;
-    pub fn H5Pget_buffer(plist_id: hid_t, tconv: *mut *const c_void/*out*/, bkg: *mut *const c_void/*out*/) -> size_t;
+    pub fn H5Pget_buffer(plist_id: hid_t, tconv: *mut *const c_void, bkg: *mut *const c_void) -> size_t;
     pub fn H5Pset_preserve(plist_id: hid_t, status: hbool_t) -> herr_t;
     pub fn H5Pget_preserve(plist_id: hid_t) -> c_int;
     pub fn H5Pset_edc_check(plist_id: hid_t, check: H5Z_EDC_t) -> herr_t;
     pub fn H5Pget_edc_check(plist_id: hid_t) -> H5Z_EDC_t;
     pub fn H5Pset_filter_callback(plist_id: hid_t, func: H5Z_filter_func_t, op_data: *const c_void) -> herr_t;
     pub fn H5Pset_btree_ratios(plist_id: hid_t, left: c_double, middle: c_double, right: c_double) -> herr_t;
-    pub fn H5Pget_btree_ratios(plist_id: hid_t, left: *mut c_double/*out*/, middle: *mut c_double/*out*/,
-                               right: *mut c_double/*out*/) -> herr_t;
+    pub fn H5Pget_btree_ratios(plist_id: hid_t, left: *mut c_double, middle: *mut c_double,
+                               right: *mut c_double) -> herr_t;
     pub fn H5Pset_vlen_mem_manager(plist_id: hid_t, alloc_func: H5MM_allocate_t, alloc_info: *const c_void,
                                    free_func: H5MM_free_t, free_info: *const c_void) -> herr_t;
     pub fn H5Pget_vlen_mem_manager(plist_id: hid_t,alloc_func: *mut H5MM_allocate_t,
                                    alloc_info: *mut *const c_void,
                                    free_func: *mut H5MM_free_t, free_info: *mut *const c_void) -> herr_t;
     pub fn H5Pset_hyper_vector_size(fapl_id: hid_t, size: size_t) -> herr_t;
-    pub fn H5Pget_hyper_vector_size(fapl_id: hid_t, size: *mut size_t/*out*/) -> herr_t;
+    pub fn H5Pget_hyper_vector_size(fapl_id: hid_t, size: *mut size_t) -> herr_t;
     pub fn H5Pset_type_conv_cb(dxpl_id: hid_t, op: H5T_conv_except_func_t,
                                operate_data: *const c_void) -> herr_t;
     pub fn H5Pget_type_conv_cb(dxpl_id: hid_t, op: *mut H5T_conv_except_func_t,
@@ -251,20 +251,20 @@ extern "C" {
     pub fn H5Pget_mpio_no_collective_cause(plist_id: hid_t, local_no_collective_cause: *mut u32,
                                            global_no_collective_cause: *mut u32) -> herr_t;
     pub fn H5Pset_create_intermediate_group(plist_id: hid_t, crt_intmd: c_uint) -> herr_t;
-    pub fn H5Pget_create_intermediate_group(plist_id: hid_t, crt_intmd: *mut c_uint/*out*/) -> herr_t;
+    pub fn H5Pget_create_intermediate_group(plist_id: hid_t, crt_intmd: *mut c_uint) -> herr_t;
     pub fn H5Pset_local_heap_size_hint(plist_id: hid_t, size_hint: size_t) -> herr_t;
-    pub fn H5Pget_local_heap_size_hint(plist_id: hid_t, size_hint: *mut size_t/*out*/) -> herr_t;
+    pub fn H5Pget_local_heap_size_hint(plist_id: hid_t, size_hint: *mut size_t) -> herr_t;
     pub fn H5Pset_link_phase_change(plist_id: hid_t, max_compact: c_uint, min_dense: c_uint) -> herr_t;
-    pub fn H5Pget_link_phase_change(plist_id: hid_t, max_compact: *mut c_uint/*out*/,
-                                    min_dense: *mut c_uint/*out*/) -> herr_t;
+    pub fn H5Pget_link_phase_change(plist_id: hid_t, max_compact: *mut c_uint,
+                                    min_dense: *mut c_uint) -> herr_t;
     pub fn H5Pset_est_link_info(plist_id: hid_t, est_num_entries: c_uint,
                                 est_name_len: c_uint) -> herr_t;
-    pub fn H5Pget_est_link_info(plist_id: hid_t, est_num_entries: *mut c_uint/* out */,
-                                est_name_len: *mut c_uint/* out */) -> herr_t;
+    pub fn H5Pget_est_link_info(plist_id: hid_t, est_num_entries: *mut c_uint,
+                                est_name_len: *mut c_uint) -> herr_t;
     pub fn H5Pset_link_creation_order(plist_id: hid_t, crt_order_flags: c_uint) -> herr_t;
-    pub fn H5Pget_link_creation_order(plist_id: hid_t, crt_order_flags: *mut c_uint/* out */) -> herr_t;
+    pub fn H5Pget_link_creation_order(plist_id: hid_t, crt_order_flags: *mut c_uint) -> herr_t;
     pub fn H5Pset_char_encoding(plist_id: hid_t, encoding: H5T_cset_t) -> herr_t;
-    pub fn H5Pget_char_encoding(plist_id: hid_t, encoding: *mut H5T_cset_t/*out*/) -> herr_t;
+    pub fn H5Pget_char_encoding(plist_id: hid_t, encoding: *mut H5T_cset_t) -> herr_t;
     pub fn H5Pset_nlinks(plist_id: hid_t, nlinks: size_t) -> herr_t;
     pub fn H5Pget_nlinks(plist_id: hid_t, nlinks: *mut size_t) -> herr_t;
     pub fn H5Pset_elink_prefix(plist_id: hid_t, prefix: *const c_char) -> herr_t;
@@ -276,7 +276,7 @@ extern "C" {
     pub fn H5Pset_elink_cb(lapl_id: hid_t, func: H5L_elink_traverse_t, op_data: *const c_void) -> herr_t;
     pub fn H5Pget_elink_cb(lapl_id: hid_t, func: *mut H5L_elink_traverse_t, op_data: *mut *const c_void) -> herr_t;
     pub fn H5Pset_copy_object(plist_id: hid_t, crt_intmd: c_uint) -> herr_t;
-    pub fn H5Pget_copy_object(plist_id: hid_t, crt_intmd: *mut c_uint/*out*/) -> herr_t;
+    pub fn H5Pget_copy_object(plist_id: hid_t, crt_intmd: *mut c_uint) -> herr_t;
     pub fn H5Padd_merge_committed_dtype_path(plist_id: hid_t, path: *const c_char) -> herr_t;
     pub fn H5Pfree_merge_committed_dtype_paths(plist_id: hid_t) -> herr_t;
     pub fn H5Pset_mcdt_search_cb(plist_id: hid_t, func: H5O_mcdt_search_cb_t, op_data: *const c_void) -> herr_t;

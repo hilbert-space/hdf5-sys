@@ -224,8 +224,8 @@ extern "C" {
     pub fn H5Tpack(dtype_id: hid_t) -> herr_t;
     pub fn H5Tenum_create(base_id: hid_t) -> hid_t;
     pub fn H5Tenum_insert(dtype: hid_t, name: *const c_char, value: *const c_void) -> herr_t;
-    pub fn H5Tenum_nameof(dtype: hid_t, value: *const c_void, name: *mut c_char/*out*/, size: size_t) -> herr_t;
-    pub fn H5Tenum_valueof(dtype: hid_t, name: *const c_char, value: *mut c_void/*out*/) -> herr_t;
+    pub fn H5Tenum_nameof(dtype: hid_t, value: *const c_void, name: *mut c_char, size: size_t) -> herr_t;
+    pub fn H5Tenum_valueof(dtype: hid_t, name: *const c_char, value: *mut c_void) -> herr_t;
     pub fn H5Tvlen_create(base_id: hid_t) -> hid_t;
     pub fn H5Tarray_create2(base_id: hid_t, ndims: c_uint, dim: *const hsize_t) -> hid_t;
     pub fn H5Tget_array_ndims(dtype_id: hid_t) -> c_int;
@@ -239,11 +239,10 @@ extern "C" {
     pub fn H5Tget_order(dtype_id: hid_t) -> H5T_order_t;
     pub fn H5Tget_precision(dtype_id: hid_t) -> size_t;
     pub fn H5Tget_offset(dtype_id: hid_t) -> c_int;
-    pub fn H5Tget_pad(dtype_id: hid_t, lsb: *mut H5T_pad_t/*out*/, msb: *mut H5T_pad_t/*out*/) -> herr_t;
+    pub fn H5Tget_pad(dtype_id: hid_t, lsb: *mut H5T_pad_t, msb: *mut H5T_pad_t) -> herr_t;
     pub fn H5Tget_sign(dtype_id: hid_t) -> H5T_sign_t;
-    pub fn H5Tget_fields(dtype_id: hid_t, spos: *mut size_t/*out*/, epos: *mut size_t/*out*/,
-                         esize: *mut size_t/*out*/, mpos: *mut size_t/*out*/,
-                         msize: *mut size_t/*out*/) -> herr_t;
+    pub fn H5Tget_fields(dtype_id: hid_t, spos: *mut size_t, epos: *mut size_t, esize: *mut size_t,
+                         mpos: *mut size_t, msize: *mut size_t) -> herr_t;
     pub fn H5Tget_ebias(dtype_id: hid_t) -> size_t;
     pub fn H5Tget_norm(dtype_id: hid_t) -> H5T_norm_t;
     pub fn H5Tget_inpad(dtype_id: hid_t) -> H5T_pad_t;
@@ -254,7 +253,7 @@ extern "C" {
     pub fn H5Tget_member_offset(dtype_id: hid_t, membno: c_uint) -> size_t;
     pub fn H5Tget_member_class(dtype_id: hid_t, membno: c_uint) -> H5T_class_t;
     pub fn H5Tget_member_dtype(dtype_id: hid_t, membno: c_uint) -> hid_t;
-    pub fn H5Tget_member_value(dtype_id: hid_t, membno: c_uint, value: *mut c_void/*out*/) -> herr_t;
+    pub fn H5Tget_member_value(dtype_id: hid_t, membno: c_uint, value: *mut c_void) -> herr_t;
     pub fn H5Tget_cset(dtype_id: hid_t) -> H5T_cset_t;
     pub fn H5Tis_variable_str(dtype_id: hid_t) -> htri_t;
     pub fn H5Tget_native_dtype(dtype_id: hid_t, direction: H5T_direction_t) -> hid_t;
