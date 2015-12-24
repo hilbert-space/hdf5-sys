@@ -18,18 +18,19 @@ pub enum H5FD_file_image_op_t {
     H5FD_FILE_IMAGE_OP_FILE_CLOSE,
 }
 
-type H5FD_file_image_callbacks_image_malloc_func = extern fn(size_t, H5FD_file_image_op_t,
-                                                             *mut c_void) -> *const c_void;
-type H5FD_file_image_callbacks_image_memcpy_func = extern fn(*mut c_void, *const c_void, size_t,
-                                                             H5FD_file_image_op_t,
-                                                             udata: *mut c_void) -> *const c_void;
-type H5FD_file_image_callbacks_image_realloc_func = extern fn(*mut c_void, size_t,
-                                                              H5FD_file_image_op_t,
-                                                              *mut c_void) -> *const c_void;
-type H5FD_file_image_callbacks_image_free_func = extern fn(*mut c_void, H5FD_file_image_op_t,
-                                                           *mut c_void) -> herr_t;
-type H5FD_file_image_callbacks_udata_copy_func = extern fn(*mut c_void) -> *const c_void;
-type H5FD_file_image_callbacks_udata_free_func = extern fn(*mut c_void) -> herr_t;
+type H5FD_file_image_callbacks_image_malloc_func = extern "C" fn(size_t, H5FD_file_image_op_t,
+                                                                 *mut c_void) -> *const c_void;
+type H5FD_file_image_callbacks_image_memcpy_func = extern "C" fn(*mut c_void, *const c_void,
+                                                                 size_t, H5FD_file_image_op_t,
+                                                                 udata: *mut c_void)
+                                                                 -> *const c_void;
+type H5FD_file_image_callbacks_image_realloc_func = extern "C" fn(*mut c_void, size_t,
+                                                                  H5FD_file_image_op_t,
+                                                                  *mut c_void) -> *const c_void;
+type H5FD_file_image_callbacks_image_free_func = extern "C" fn(*mut c_void, H5FD_file_image_op_t,
+                                                               *mut c_void) -> herr_t;
+type H5FD_file_image_callbacks_udata_copy_func = extern "C" fn(*mut c_void) -> *const c_void;
+type H5FD_file_image_callbacks_udata_free_func = extern "C" fn(*mut c_void) -> herr_t;
 
 #[repr(C)]
 pub struct H5FD_file_image_callbacks_t {

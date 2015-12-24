@@ -177,10 +177,10 @@ pub enum H5T_conv_ret_t {
 }
 pub use self::H5T_conv_ret_t::*;
 
-pub type H5T_conv_t = extern fn(hid_t, hid_t, *mut H5T_cdata_t, size_t, size_t, size_t,
-                                *mut c_void, *mut c_void, hid_t) -> herr_t;
-pub type H5T_conv_except_func_t = extern fn(H5T_conv_except_t, hid_t, hid_t, *mut c_void,
-                                            *mut c_void, *mut c_void) -> H5T_conv_ret_t;
+pub type H5T_conv_t = extern "C" fn(hid_t, hid_t, *mut H5T_cdata_t, size_t, size_t, size_t,
+                                    *mut c_void, *mut c_void, hid_t) -> herr_t;
+pub type H5T_conv_except_func_t = extern "C" fn(H5T_conv_except_t, hid_t, hid_t, *mut c_void,
+                                                *mut c_void, *mut c_void) -> H5T_conv_ret_t;
 
 extern "C" {
     pub static H5T_C_S1_g: hid_t;

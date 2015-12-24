@@ -4,8 +4,8 @@ use H5public::{hbool_t, herr_t, htri_t, hsize_t};
 
 pub type hid_t = c_int;
 
-pub type H5I_search_func_t = extern fn (*const c_void, hid_t, *const c_void) -> c_int;
-pub type H5I_free_t = extern fn(*mut c_void) -> herr_t;
+pub type H5I_search_func_t = extern "C" fn(*const c_void, hid_t, *const c_void) -> c_int;
+pub type H5I_free_t = extern "C" fn(*mut c_void) -> herr_t;
 
 #[repr(C)]
 pub enum H5I_type_t {

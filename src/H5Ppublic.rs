@@ -52,21 +52,21 @@ pub use self::H5P_CLS_OBJECT_COPY_ID_g as H5P_OBJECT_COPY;
 pub use self::H5P_CLS_LINK_CREATE_ID_g as H5P_LINK_CREATE;
 pub use self::H5P_CLS_LINK_ACCESS_ID_g as H5P_LINK_ACCESS;
 
-pub type H5P_cls_create_func_t = extern fn(hid_t, *mut c_void) -> herr_t;
-pub type H5P_cls_copy_func_t = extern fn(hid_t, hid_t, *mut c_void) -> herr_t;
-pub type H5P_cls_close_func_t = extern fn(hid_t, *mut c_void) -> herr_t;
+pub type H5P_cls_create_func_t = extern "C" fn(hid_t, *mut c_void) -> herr_t;
+pub type H5P_cls_copy_func_t = extern "C" fn(hid_t, hid_t, *mut c_void) -> herr_t;
+pub type H5P_cls_close_func_t = extern "C" fn(hid_t, *mut c_void) -> herr_t;
 
-pub type H5P_prp_cb1_t = extern fn(*const c_char, size_t, *mut c_void) -> herr_t;
-pub type H5P_prp_cb2_t = extern fn(hid_t, *const c_char, size_t, *mut c_void) -> herr_t;
+pub type H5P_prp_cb1_t = extern "C" fn(*const c_char, size_t, *mut c_void) -> herr_t;
+pub type H5P_prp_cb2_t = extern "C" fn(hid_t, *const c_char, size_t, *mut c_void) -> herr_t;
 pub type H5P_prp_create_func_t = H5P_prp_cb1_t;
 pub type H5P_prp_set_func_t = H5P_prp_cb2_t;
 pub type H5P_prp_get_func_t = H5P_prp_cb2_t;
 pub type H5P_prp_delete_func_t = H5P_prp_cb2_t;
 pub type H5P_prp_copy_func_t = H5P_prp_cb1_t;
-pub type H5P_prp_compare_func_t = extern fn(*const c_void, *const c_void, size_t) -> c_int;
+pub type H5P_prp_compare_func_t = extern "C" fn(*const c_void, *const c_void, size_t) -> c_int;
 pub type H5P_prp_close_func_t = H5P_prp_cb1_t;
 
-pub type H5P_iterate_t = extern fn(hid_t, *const c_char, *mut c_void) -> herr_t;
+pub type H5P_iterate_t = extern "C" fn(hid_t, *const c_char, *mut c_void) -> herr_t;
 
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]

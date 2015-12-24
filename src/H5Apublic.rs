@@ -13,8 +13,8 @@ pub struct H5A_info_t {
     data_size: hsize_t,
 }
 
-pub type H5A_operator2_t = extern fn(hid_t, *const c_char, *const H5A_info_t, *mut c_void)
-                                     -> herr_t;
+pub type H5A_operator2_t = extern "C" fn(hid_t, *const c_char, *const H5A_info_t, *mut c_void)
+                                         -> herr_t;
 
 extern "C" {
     pub fn H5Acreate2(loc_id: hid_t, attr_name: *const c_char, type_id: hid_t, space_id: hid_t,

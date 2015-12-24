@@ -4,12 +4,13 @@ use H5Ipublic::hid_t;
 use H5Tpublic::H5T_cset_t;
 use H5public::{H5_index_t, H5_iter_order_t, haddr_t, hbool_t, herr_t, hsize_t, htri_t};
 
-pub type H5L_create_func_t = extern fn(*const c_char, hid_t, *const c_void, size_t, hid_t);
-pub type H5L_move_func_t = extern fn(*const c_char, hid_t, *const c_void, size_t);
-pub type H5L_copy_func_t = extern fn(*const c_char, hid_t, *const c_void, size_t);
-pub type H5L_traverse_func_t = extern fn(*const c_char, hid_t, *const c_void, size_t, hid_t);
-pub type H5L_delete_func_t = extern fn(*const c_char, hid_t, *const c_void, size_t, hid_t);
-pub type H5L_query_func_t = extern fn(*const c_char, *const c_void, size_t, *mut c_void, size_t);
+pub type H5L_create_func_t = extern "C" fn(*const c_char, hid_t, *const c_void, size_t, hid_t);
+pub type H5L_move_func_t = extern "C" fn(*const c_char, hid_t, *const c_void, size_t);
+pub type H5L_copy_func_t = extern "C" fn(*const c_char, hid_t, *const c_void, size_t);
+pub type H5L_traverse_func_t = extern "C" fn(*const c_char, hid_t, *const c_void, size_t, hid_t);
+pub type H5L_delete_func_t = extern "C" fn(*const c_char, hid_t, *const c_void, size_t, hid_t);
+pub type H5L_query_func_t = extern "C" fn(*const c_char, *const c_void, size_t, *mut c_void,
+                                          size_t);
 
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]

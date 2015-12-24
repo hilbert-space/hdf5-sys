@@ -3,9 +3,9 @@ use libc::{c_char, c_uint, c_void, size_t};
 use H5Ipublic::hid_t;
 use H5public::{herr_t, hsize_t, haddr_t};
 
-pub type H5D_operator_t = extern fn(*mut c_void, hid_t, c_uint, *const hsize_t, *mut c_void);
-pub type H5D_gather_func_t = extern fn(*const c_void, size_t, *mut c_void);
-pub type H5D_scatter_func_t = extern fn(*mut *const c_void, *mut size_t, *mut c_void);
+pub type H5D_operator_t = extern "C" fn(*mut c_void, hid_t, c_uint, *const hsize_t, *mut c_void);
+pub type H5D_gather_func_t = extern "C" fn(*const c_void, size_t, *mut c_void);
+pub type H5D_scatter_func_t = extern "C" fn(*mut *const c_void, *mut size_t, *mut c_void);
 
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]

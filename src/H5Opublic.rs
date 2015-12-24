@@ -61,7 +61,8 @@ pub struct H5O_info_t {
 
 pub type H5O_msg_crt_idx_t = u32;
 
-pub type H5O_iterate_t = extern fn(hid_t, *const c_char, *const H5O_info_t, *mut c_void) -> herr_t;
+pub type H5O_iterate_t = extern "C" fn(hid_t, *const c_char, *const H5O_info_t, *mut c_void)
+                                       -> herr_t;
 
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]
@@ -72,7 +73,7 @@ pub enum H5O_mcdt_search_ret_t {
 }
 pub use self::H5O_mcdt_search_cb_t::*;
 
-pub type H5O_mcdt_search_cb_t = extern fn(*mut c_void) -> H5O_mcdt_search_ret_t;
+pub type H5O_mcdt_search_cb_t = extern "C" fn(*mut c_void) -> H5O_mcdt_search_ret_t;
 
 extern "C" {
     pub fn H5Oopen(loc_id: hid_t, name: *const c_char, lapl_id: hid_t) -> hid_t;

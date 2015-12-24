@@ -6,11 +6,11 @@ use H5public::herr_t;
 pub type H5E_major_t = hid_t;
 pub type H5E_minor_t = hid_t;
 
-pub type H5E_walk1_t = extern fn (c_uint, *const H5E_error1_t, *const c_void);
-pub type H5E_walk2_t = extern fn (c_uint, *const H5E_error2_t, *const c_void);
+pub type H5E_walk1_t = extern "C" fn(c_uint, *const H5E_error1_t, *const c_void);
+pub type H5E_walk2_t = extern "C" fn(c_uint, *const H5E_error2_t, *const c_void);
 
-pub type H5E_auto1_t = extern fn(*const c_void);
-pub type H5E_auto2_t = extern fn(hid_t, *const c_void);
+pub type H5E_auto1_t = extern "C" fn(*const c_void);
+pub type H5E_auto2_t = extern "C" fn(hid_t, *const c_void);
 
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]
