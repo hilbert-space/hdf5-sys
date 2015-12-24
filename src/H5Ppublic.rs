@@ -243,7 +243,8 @@ extern "C" {
     pub fn H5Pget_preserve(plist_id: hid_t) -> c_int;
     pub fn H5Pset_edc_check(plist_id: hid_t, check: H5Z_EDC_t) -> herr_t;
     pub fn H5Pget_edc_check(plist_id: hid_t) -> H5Z_EDC_t;
-    pub fn H5Pset_filter_callback(plist_id: hid_t, func: H5Z_filter_func_t, op_data: *const c_void) -> herr_t;
+    pub fn H5Pset_filter_callback(plist_id: hid_t, func: H5Z_filter_func_t, op_data: *const c_void)
+                                  -> herr_t;
     pub fn H5Pset_btree_ratios(plist_id: hid_t, left: c_double, middle: c_double, right: c_double)
                                -> herr_t;
     pub fn H5Pget_btree_ratios(plist_id: hid_t, left: *mut c_double, middle: *mut c_double,
@@ -260,7 +261,9 @@ extern "C" {
                                operate_data: *const c_void) -> herr_t;
     pub fn H5Pget_type_conv_cb(dxpl_id: hid_t, op: *mut H5T_conv_except_func_t,
                                operate_data: *mut *const c_void) -> herr_t;
-    pub fn H5Pget_mpio_actual_chunk_opt_mode(plist_id: hid_t, actual_chunk_opt_mode: *mut H5D_mpio_actual_chunk_opt_mode_t) -> herr_t;
+    pub fn H5Pget_mpio_actual_chunk_opt_mode(plist_id: hid_t,
+                                             actual_chunk_opt_mode: *mut H5D_mpio_actual_chunk_opt_mode_t)
+                                             -> herr_t;
     pub fn H5Pget_mpio_actual_io_mode(plist_id: hid_t,
                                       actual_io_mode: *mut H5D_mpio_actual_io_mode_t) -> herr_t;
     pub fn H5Pget_mpio_no_collective_cause(plist_id: hid_t, local_no_collective_cause: *mut u32,

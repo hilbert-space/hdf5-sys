@@ -15,7 +15,7 @@ pub type H5L_query_func_t = extern "C" fn(*const c_char, *const c_void, size_t, 
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]
 pub enum H5L_type_t {
-    H5L_TYPE_ERROR = (-1),
+    H5L_TYPE_ERROR = -1,
     H5L_TYPE_HARD = 0,
     H5L_TYPE_SOFT = 1,
     H5L_TYPE_EXTERNAL = 64,
@@ -29,7 +29,7 @@ pub struct H5L_info_t {
     corder_valid: hbool_t,
     corder: i64,
     cset: H5T_cset_t,
-    address: haddr_t,  // TODO: Should be a haddr_t/size_t union (address/val_size)
+    address: haddr_t, // TODO: Should be a haddr_t/size_t union (address/val_size)
 }
 
 #[repr(C)]

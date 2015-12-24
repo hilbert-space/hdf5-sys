@@ -9,8 +9,8 @@ pub type H5I_free_t = extern "C" fn(*mut c_void) -> herr_t;
 
 #[repr(C)]
 pub enum H5I_type_t {
-    H5I_UNINIT = (-2),
-    H5I_BADID = (-1),
+    H5I_UNINIT = -2,
+    H5I_BADID = -1,
     H5I_FILE = 1,
     H5I_GROUP,
     H5I_DATATYPE,
