@@ -3,7 +3,7 @@
 The package provides bindings to [HDF5][1].
 
 Note that the high-level interface is not compiled since it currently
-[excludes][2] the ability to build the lower-level interface thread safe.
+[excludes][2] the ability to make the lower-level interface thread safe.
 
 ## [Documentation][doc]
 
