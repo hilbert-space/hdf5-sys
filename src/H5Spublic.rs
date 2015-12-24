@@ -54,7 +54,8 @@ extern "C" {
                             maximum_dims: *const hsize_t) -> hid_t;
     pub fn H5Sis_simple(space_id: hid_t) -> htri_t;
     pub fn H5Soffset_simple(space_id: hid_t, offset: *const hssize_t) -> herr_t;
-    pub fn H5Sget_simple_extent_dims(space_id: hid_t, dims: *mut hsize_t, maxdims: *mut hsize_t) -> c_int;
+    pub fn H5Sget_simple_extent_dims(space_id: hid_t, dims: *mut hsize_t, maxdims: *mut hsize_t)
+                                     -> c_int;
     pub fn H5Sget_simple_extent_ndims(space_id: hid_t) -> c_int;
     pub fn H5Sget_simple_extent_npoints(space_id: hid_t) -> hssize_t;
     pub fn H5Sget_simple_extent_type(space_id: hid_t) -> H5S_class_t;

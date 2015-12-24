@@ -13,7 +13,8 @@ pub struct H5A_info_t {
     data_size: hsize_t,
 }
 
-pub type H5A_operator2_t = extern fn(hid_t, *const c_char, *const H5A_info_t, *mut c_void) -> herr_t;
+pub type H5A_operator2_t = extern fn(hid_t, *const c_char, *const H5A_info_t, *mut c_void)
+                                     -> herr_t;
 
 extern "C" {
     pub fn H5Acreate2(loc_id: hid_t, attr_name: *const c_char, type_id: hid_t, space_id: hid_t,
@@ -25,7 +26,8 @@ extern "C" {
     pub fn H5Aopen_by_name(loc_id: hid_t, obj_name: *const c_char, attr_name: *const c_char,
                            aapl_id: hid_t, lapl_id: hid_t) -> hid_t;
     pub fn H5Aopen_by_idx(loc_id: hid_t, obj_name: *const c_char, idx_type: H5_index_t,
-                          order: H5_iter_order_t, n: hsize_t, aapl_id: hid_t, lapl_id: hid_t) -> hid_t;
+                          order: H5_iter_order_t, n: hsize_t, aapl_id: hid_t, lapl_id: hid_t)
+                          -> hid_t;
     pub fn H5Awrite(attr_id: hid_t, type_id: hid_t, buf: *const c_void) -> herr_t;
     pub fn H5Aread(attr_id: hid_t, type_id: hid_t, buf: *mut c_void) -> herr_t;
     pub fn H5Aclose(attr_id: hid_t) -> herr_t;
@@ -54,8 +56,8 @@ extern "C" {
     pub fn H5Adelete(loc_id: hid_t, name: *const c_char) -> herr_t;
     pub fn H5Adelete_by_name(loc_id: hid_t, obj_name: *const c_char, attr_name: *const c_char,
                              lapl_id: hid_t) -> herr_t;
-    pub fn H5Adelete_by_idx(loc_id: hid_t, obj_name: *const c_char, idx_type: H5_index_t, order:
-                            H5_iter_order_t, n: hsize_t, lapl_id: hid_t) -> herr_t;
+    pub fn H5Adelete_by_idx(loc_id: hid_t, obj_name: *const c_char, idx_type: H5_index_t,
+                            order: H5_iter_order_t, n: hsize_t, lapl_id: hid_t) -> herr_t;
     pub fn H5Aexists(obj_id: hid_t, attr_name: *const c_char) -> htri_t;
     pub fn H5Aexists_by_name(obj_id: hid_t, obj_name: *const c_char, attr_name: *const c_char,
                              lapl_id: hid_t) -> htri_t;

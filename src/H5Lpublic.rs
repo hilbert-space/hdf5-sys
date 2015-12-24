@@ -67,9 +67,11 @@ extern "C" {
     pub fn H5Lget_val(link_loc_id: hid_t, link_name: *const c_char, linkval_buff: *mut c_void,
                       size: size_t, lapl_id: hid_t) -> herr_t;
     pub fn H5Lunpack_elink_val(ext_linkval: *const c_char, link_size: size_t, flags: *mut c_uint,
-                               filename: *mut *const c_char, obj_path: *mut *const c_char) -> herr_t;
+                               filename: *mut *const c_char, obj_path: *mut *const c_char)
+                               -> herr_t;
     pub fn H5Lcreate_ud(link_loc_id: hid_t, link_name: *const c_char, link_type: H5L_type_t,
-                        udata: *const c_char, udata_size: size_t, lcpl_id: hid_t, lapl_id: hid_t) -> herr_t;
+                        udata: *const c_char, udata_size: size_t, lcpl_id: hid_t, lapl_id: hid_t)
+                        -> herr_t;
     pub fn H5Lregister(link_class: *const H5L_class_t) -> herr_t;
     pub fn H5Lunregister(link_cls_id: H5L_type_t) -> herr_t;
     pub fn H5Lis_registered(link_cls_id: H5L_type_t) -> htri_t;

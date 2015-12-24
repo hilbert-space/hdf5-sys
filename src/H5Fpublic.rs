@@ -68,7 +68,8 @@ extern "C" {
     pub fn H5Fcreate(filename: *const c_char, flags: c_uint, create_plist: hid_t,
                      access_plist: hid_t) -> hid_t;
     pub fn H5Fopen(filename: *const c_char, flags: c_uint, access_plist: hid_t) -> hid_t;
-    pub fn H5Fget_file_image(file_id: hid_t, buf_ptr: *const c_void, buf_len: *const size_t) -> ssize_t;
+    pub fn H5Fget_file_image(file_id: hid_t, buf_ptr: *const c_void, buf_len: *const size_t)
+                             -> ssize_t;
     pub fn H5Freopen(file_id: hid_t) -> hid_t;
     pub fn H5Fclose(file_id: hid_t) -> herr_t;
     pub fn H5Fflush(object_id: hid_t, scope: H5F_scope_t) -> herr_t;
@@ -83,15 +84,17 @@ extern "C" {
     pub fn H5Fget_intent(file_id: hid_t, intent: *mut c_uint) -> herr_t;
     pub fn H5Fget_name(obj_id: hid_t, name: *mut c_char, size: size_t) -> ssize_t;
     pub fn H5Fget_obj_count(file_id: hid_t, types: c_uint) -> ssize_t;
-    pub fn H5Fget_obj_ids(file_id: hid_t, types: c_uint, max_objs: size_t, obj_id_list: *mut hid_t) -> ssize_t;
+    pub fn H5Fget_obj_ids(file_id: hid_t, types: c_uint, max_objs: size_t, obj_id_list: *mut hid_t)
+                          -> ssize_t;
     pub fn H5Fget_freespace(file_id: hid_t) -> hssize_t;
     pub fn H5Fclear_elink_file_cache(file_id: hid_t) -> herr_t;
     pub fn H5Fset_mdc_config(file_id: hid_t, config_ptr: *const H5AC_cache_config_t) -> herr_t;
     pub fn H5Fget_mdc_config(file_id: hid_t, config_ptr: *mut H5AC_cache_config_t) -> herr_t;
     pub fn H5Fget_mdc_hit_rate(file_id: hid_t, hit_rate_ptr: *mut c_double) -> herr_t;
     pub fn H5Freset_mdc_hit_rate_stats(file_id: hid_t) -> herr_t;
-    pub fn H5Fget_mdc_size(file_id: hid_t, max_size_ptr: *mut size_t, min_clean_size_ptr: *mut
-                           size_t, cur_size_ptr: *mut size_t, cur_num_entries_ptr: *mut c_int) -> herr_t;
+    pub fn H5Fget_mdc_size(file_id: hid_t, max_size_ptr: *mut size_t,
+                           min_clean_size_ptr: *mut size_t, cur_size_ptr: *mut size_t,
+                           cur_num_entries_ptr: *mut c_int) -> herr_t;
     pub fn H5Fset_mpi_atomicity(file_id: hid_t, flag: hbool_t) -> herr_t;
     pub fn H5Fget_mpi_atomicity(file_id: hid_t, flag: *mut hbool_t) -> herr_t;
 }

@@ -177,8 +177,10 @@ pub enum H5T_conv_ret_t {
 }
 pub use self::H5T_conv_ret_t::*;
 
-pub type H5T_conv_t = extern fn(hid_t, hid_t, *mut H5T_cdata_t, size_t, size_t, size_t, *mut c_void, *mut c_void, hid_t) -> herr_t;
-pub type H5T_conv_except_func_t = extern fn(H5T_conv_except_t, hid_t, hid_t, *mut c_void, *mut c_void, *mut c_void) -> H5T_conv_ret_t;
+pub type H5T_conv_t = extern fn(hid_t, hid_t, *mut H5T_cdata_t, size_t, size_t, size_t,
+                                *mut c_void, *mut c_void, hid_t) -> herr_t;
+pub type H5T_conv_except_func_t = extern fn(H5T_conv_except_t, hid_t, hid_t, *mut c_void,
+                                            *mut c_void, *mut c_void) -> H5T_conv_ret_t;
 
 extern "C" {
     pub static H5T_C_S1_g: hid_t;
@@ -215,16 +217,19 @@ extern "C" {
     pub fn H5Tcommit2(loc_id: hid_t, name: *const c_char, dtype_id: hid_t, lcpl_id: hid_t,
                       tcpl_id: hid_t, tapl_id: hid_t) -> herr_t;
     pub fn H5Topen2(loc_id: hid_t, name: *const c_char, tapl_id: hid_t) -> hid_t;
-    pub fn H5Tcommit_anon(loc_id: hid_t, dtype_id: hid_t, tcpl_id: hid_t, tapl_id: hid_t) -> herr_t;
+    pub fn H5Tcommit_anon(loc_id: hid_t, dtype_id: hid_t, tcpl_id: hid_t, tapl_id: hid_t)
+                          -> herr_t;
     pub fn H5Tget_create_plist(dtype_id: hid_t) -> hid_t;
     pub fn H5Tcommitted(dtype_id: hid_t) -> htri_t;
     pub fn H5Tencode(obj_id: hid_t, buf: *mut c_void, nalloc: *mut size_t) -> herr_t;
     pub fn H5Tdecode(buf: *const c_void) -> hid_t;
-    pub fn H5Tinsert(parent_id: hid_t, name: *const c_char, offset: size_t, member_id: hid_t) -> herr_t;
+    pub fn H5Tinsert(parent_id: hid_t, name: *const c_char, offset: size_t, member_id: hid_t)
+                     -> herr_t;
     pub fn H5Tpack(dtype_id: hid_t) -> herr_t;
     pub fn H5Tenum_create(base_id: hid_t) -> hid_t;
     pub fn H5Tenum_insert(dtype: hid_t, name: *const c_char, value: *const c_void) -> herr_t;
-    pub fn H5Tenum_nameof(dtype: hid_t, value: *const c_void, name: *mut c_char, size: size_t) -> herr_t;
+    pub fn H5Tenum_nameof(dtype: hid_t, value: *const c_void, name: *mut c_char, size: size_t)
+                          -> herr_t;
     pub fn H5Tenum_valueof(dtype: hid_t, name: *const c_char, value: *mut c_void) -> herr_t;
     pub fn H5Tvlen_create(base_id: hid_t) -> hid_t;
     pub fn H5Tarray_create2(base_id: hid_t, ndims: c_uint, dim: *const hsize_t) -> hid_t;
@@ -263,8 +268,8 @@ extern "C" {
     pub fn H5Tset_offset(dtype_id: hid_t, offset: size_t) -> herr_t;
     pub fn H5Tset_pad(dtype_id: hid_t, lsb: H5T_pad_t, msb: H5T_pad_t) -> herr_t;
     pub fn H5Tset_sign(dtype_id: hid_t, sign: H5T_sign_t) -> herr_t;
-    pub fn H5Tset_fields(dtype_id: hid_t, spos: size_t, epos: size_t, esize: size_t,
-                         mpos: size_t, msize: size_t) -> herr_t;
+    pub fn H5Tset_fields(dtype_id: hid_t, spos: size_t, epos: size_t, esize: size_t, mpos: size_t,
+                         msize: size_t) -> herr_t;
     pub fn H5Tset_ebias(dtype_id: hid_t, ebias: size_t) -> herr_t;
     pub fn H5Tset_norm(dtype_id: hid_t, norm: H5T_norm_t) -> herr_t;
     pub fn H5Tset_inpad(dtype_id: hid_t, pad: H5T_pad_t) -> herr_t;
@@ -272,8 +277,8 @@ extern "C" {
     pub fn H5Tset_strpad(dtype_id: hid_t, strpad: H5T_str_t) -> herr_t;
     pub fn H5Tregister(pers: H5T_pers_t, name: *const c_char, src_id: hid_t,
                        dst_id: hid_t, func: H5T_conv_t) -> herr_t;
-    pub fn H5Tunregister(pers: H5T_pers_t, name: *const c_char, src_id: hid_t,
-                         dst_id: hid_t, func: H5T_conv_t) -> herr_t;
+    pub fn H5Tunregister(pers: H5T_pers_t, name: *const c_char, src_id: hid_t, dst_id: hid_t,
+                         func: H5T_conv_t) -> herr_t;
     pub fn H5Tfind(src_id: hid_t, dst_id: hid_t, pcdata: *mut *const H5T_cdata_t) -> H5T_conv_t;
     pub fn H5Tcompiler_conv(src_id: hid_t, dst_id: hid_t) -> htri_t;
     pub fn H5Tconvert(src_id: hid_t, dst_id: hid_t, nelmts: size_t, buf: *mut c_void,

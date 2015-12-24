@@ -79,8 +79,8 @@ extern "C" {
     pub fn H5Oopen_by_idx(loc_id: hid_t, group_name: *const c_char, index_type: H5_index_t,
                           order: H5_iter_order_t, n: hsize_t, lapl_id: hid_t) -> hid_t;
     pub fn H5Oopen_by_addr(loc_id: hid_t, addr: haddr_t) -> hid_t;
-    pub fn H5Olink(object_id: hid_t, new_loc_id: hid_t, new_link_name: *const c_char,
-                   lcpl: hid_t, lapl: hid_t) -> herr_t;
+    pub fn H5Olink(object_id: hid_t, new_loc_id: hid_t, new_link_name: *const c_char, lcpl: hid_t,
+                   lapl: hid_t) -> herr_t;
     pub fn H5Oclose(object_id: hid_t) -> herr_t;
     pub fn H5Ocopy(src_loc_id: hid_t, src_name: *const c_char, dst_loc_id: hid_t,
                    dst_name: *const c_char, ocpypl_id: hid_t, lcpl_id: hid_t) -> herr_t;

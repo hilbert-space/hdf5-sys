@@ -39,7 +39,9 @@ pub struct H5_ih_info_t {
 extern "C" {
     pub fn H5open() -> herr_t;
     pub fn H5dont_atexit() -> herr_t;
-    pub fn H5set_free_list_limits(reg_global_lim: c_int, reg_list_lim: c_int, arr_global_lim: c_int, arr_list_lim: c_int, blk_global_lim: c_int, blk_list_lim: c_int) -> herr_t;
+    pub fn H5set_free_list_limits(reg_global_lim: c_int, reg_list_lim: c_int,
+                                  arr_global_lim: c_int, arr_list_lim: c_int,
+                                  blk_global_lim: c_int, blk_list_lim: c_int) -> herr_t;
     pub fn H5garbage_collect() -> herr_t;
     pub fn H5allocate_memory(size: size_t, clear: hbool_t) -> *mut c_void;
     pub fn H5resize_memory(mem: *mut c_void, size: size_t ) -> *mut c_void;

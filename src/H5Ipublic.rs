@@ -34,15 +34,15 @@ extern "C" {
     pub fn H5Iget_type(obj_id: hid_t) -> H5I_type_t;
     pub fn H5Iobject_verify(id: hid_t, id_member_type: H5I_type_t) -> *mut c_void;
     pub fn H5Iremove_verify(id: hid_t, id_member_type: H5I_type_t) -> *mut c_void;
-    pub fn H5Isearch(member_type: H5I_type_t, func: H5I_search_func_t,
-                     key: *const c_void) -> *mut c_void;
+    pub fn H5Isearch(member_type: H5I_type_t, func: H5I_search_func_t, key: *const c_void)
+                     -> *mut c_void;
     pub fn H5Iis_valid(obj_id: hid_t) -> htri_t;
     pub fn H5Iget_ref(obj_id: hid_t) -> c_int;
     pub fn H5Iinc_ref(obj_id: hid_t) -> c_int;
     pub fn H5Idec_ref(obj_id: hid_t) -> c_int;
     pub fn H5Iregister(member_type: H5I_type_t, object: *const c_void) -> hid_t;
-    pub fn H5Iregister_type(hash_size: size_t, reserved: c_uint,
-                            free_func: H5I_free_t) -> H5I_type_t;
+    pub fn H5Iregister_type(hash_size: size_t, reserved: c_uint, free_func: H5I_free_t)
+                            -> H5I_type_t;
     pub fn H5Idestroy_type(member_type: H5I_type_t) -> herr_t;
     pub fn H5Itype_exists(member_type: H5I_type_t) -> htri_t;
     pub fn H5Iget_type_ref(member_type: H5I_type_t) -> c_int;

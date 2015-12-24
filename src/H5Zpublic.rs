@@ -33,8 +33,8 @@ pub enum H5Z_cb_return_t {
 }
 pub use self::H5Z_cb_return_t::*;
 
-pub type H5Z_filter_func_t = extern fn(H5Z_filter_t,*mut c_void,
-                                       size_t, *mut c_void) -> H5Z_cb_return_t;
+pub type H5Z_filter_func_t = extern fn(H5Z_filter_t,*mut c_void, size_t, *mut c_void)
+                                       -> H5Z_cb_return_t;
 
 #[repr(C)]
 pub struct H5Z_cb_t {
