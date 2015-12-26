@@ -71,7 +71,7 @@ pub enum H5O_mcdt_search_ret_t {
     H5O_MCDT_SEARCH_CONT,
     H5O_MCDT_SEARCH_STOP,
 }
-pub use self::H5O_mcdt_search_cb_t::*;
+pub use self::H5O_mcdt_search_ret_t::*;
 
 pub type H5O_mcdt_search_cb_t = extern "C" fn(*mut c_void) -> H5O_mcdt_search_ret_t;
 
