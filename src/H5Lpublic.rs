@@ -29,7 +29,7 @@ pub struct H5L_info_t {
     corder_valid: hbool_t,
     corder: i64,
     cset: H5T_cset_t,
-    address: haddr_t, // TODO: Should be a haddr_t/size_t union (address/val_size)
+    address: haddr_t, // TODO: Change to the union { address: haddr_t, val_size: size_t }.
 }
 
 #[repr(C)]
