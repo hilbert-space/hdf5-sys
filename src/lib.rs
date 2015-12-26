@@ -32,6 +32,7 @@ pub use H5Fpublic::*;
 pub use H5Gpublic::*;
 pub use H5Ipublic::*;
 pub use H5Lpublic::*;
+pub use H5MMpublic::*;
 pub use H5Opublic::*;
 pub use H5PLpublic::*;
 pub use H5Ppublic::*;
