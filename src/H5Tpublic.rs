@@ -261,7 +261,7 @@ extern "C" {
     pub fn H5Tget_member_value(dtype_id: hid_t, membno: c_uint, value: *mut c_void) -> herr_t;
     pub fn H5Tget_cset(dtype_id: hid_t) -> H5T_cset_t;
     pub fn H5Tis_variable_str(dtype_id: hid_t) -> htri_t;
-    pub fn H5Tget_native_dtype(dtype_id: hid_t, direction: H5T_direction_t) -> hid_t;
+    pub fn H5Tget_native_type(dtype_id: hid_t, direction: H5T_direction_t) -> hid_t;
     pub fn H5Tset_size(dtype_id: hid_t, size: size_t) -> herr_t;
     pub fn H5Tset_order(dtype_id: hid_t, order: H5T_order_t) -> herr_t;
     pub fn H5Tset_precision(dtype_id: hid_t, prec: size_t) -> herr_t;
