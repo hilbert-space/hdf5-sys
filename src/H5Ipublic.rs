@@ -7,6 +7,7 @@ pub type hid_t = c_int;
 pub type H5I_search_func_t = extern "C" fn(*const c_void, hid_t, *const c_void) -> c_int;
 pub type H5I_free_t = extern "C" fn(*mut c_void) -> herr_t;
 
+#[derive(Clone, Copy, Debug)]
 #[repr(C)]
 pub enum H5I_type_t {
     H5I_UNINIT = -2,
@@ -27,6 +28,7 @@ pub enum H5I_type_t {
     H5I_NTYPES,
 }
 pub use self::H5I_type_t::*;
+enum_default!(H5I_type_t, H5I_type_t::H5I_UNINIT);
 
 extern "C" {
     pub fn H5Iget_file_id(obj_id: hid_t) -> hid_t;

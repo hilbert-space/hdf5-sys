@@ -22,27 +22,31 @@ pub enum H5L_type_t {
     H5L_TYPE_MAX = 255,
 }
 pub use self::H5L_type_t::*;
+enum_default!(H5L_type_t, H5L_type_t::H5L_TYPE_ERROR);
 
+#[derive(Default, Debug)]
 #[repr(C)]
 pub struct H5L_info_t {
-    link_type: H5L_type_t,
-    corder_valid: hbool_t,
-    corder: i64,
-    cset: H5T_cset_t,
-    address: haddr_t, // TODO: Change to the union { address: haddr_t, val_size: size_t }.
+    pub link_type: H5L_type_t,
+    pub corder_valid: hbool_t,
+    pub corder: i64,
+    pub cset: H5T_cset_t,
+    pub address: haddr_t, // TODO: Change to the union { address: haddr_t, val_size: size_t }.
 }
+new_as_default!(H5L_info_t);
 
+#[derive(Debug)]
 #[repr(C)]
 pub struct H5L_class_t {
-    version: c_int,
-    id: H5L_type_t,
-    comment: *const c_char,
-    create_func: H5L_create_func_t,
-    move_func: H5L_move_func_t,
-    copy_func: H5L_copy_func_t,
-    trav_func: H5L_traverse_func_t,
-    del_func: H5L_delete_func_t,
-    query_func: H5L_query_func_t,
+    pub version: c_int,
+    pub id: H5L_type_t,
+    pub comment: *const c_char,
+    pub create_func: H5L_create_func_t,
+    pub move_func: H5L_move_func_t,
+    pub copy_func: H5L_copy_func_t,
+    pub trav_func: H5L_traverse_func_t,
+    pub del_func: H5L_delete_func_t,
+    pub query_func: H5L_query_func_t,
 }
 
 pub type H5L_iterate_t = extern fn(hid_t, *const c_char, *const H5L_info_t, *mut c_void);

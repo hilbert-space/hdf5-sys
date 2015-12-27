@@ -2,6 +2,25 @@
 
 extern crate libc;
 
+macro_rules! enum_default {
+    ($name:ty, $default:expr) => (
+        impl Default for $name {
+            fn default() -> $name { $default }
+        }
+    )
+}
+
+macro_rules! new_as_default {
+    ($name:ident) => (
+        impl $name {
+            #[allow(dead_code)]
+            pub fn new() -> $name {
+                $name { ..Default::default() }
+            }
+        }
+    )
+}
+
 mod H5ACpublic;
 mod H5Apublic;
 mod H5Cpublic;

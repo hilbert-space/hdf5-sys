@@ -15,6 +15,7 @@ pub enum H5S_class_t {
     H5S_NULL = 2,
 }
 pub use self::H5S_class_t::*;
+enum_default!(H5S_class_t, H5S_class_t::H5S_NO_CLASS);
 
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]
@@ -31,9 +32,11 @@ pub enum H5S_seloper_t {
     H5S_SELECT_INVALID,
 }
 pub use self::H5S_seloper_t::*;
+enum_default!(H5S_seloper_t, H5S_seloper_t::H5S_SELECT_NOOP);
 
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]
+// Note: This type does not end with _t (it is not a typo)
 pub enum H5S_sel_type {
     H5S_SEL_ERROR = -1,
     H5S_SEL_NONE = 0,
@@ -43,6 +46,7 @@ pub enum H5S_sel_type {
     H5S_SEL_N,
 }
 pub use self::H5S_sel_type::*;
+enum_default!(H5S_sel_type, H5S_sel_type::H5S_SEL_ERROR);
 
 extern "C" {
     pub fn H5Screate(dataspace_type: H5S_class_t) -> hid_t;

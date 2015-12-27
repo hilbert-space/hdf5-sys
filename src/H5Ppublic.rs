@@ -75,6 +75,9 @@ pub enum H5D_mpio_actual_chunk_opt_mode_t {
     H5D_MPIO_LINK_CHUNK,
     H5D_MPIO_MULTI_CHUNK,
 }
+pub use self::H5D_mpio_actual_chunk_opt_mode_t::*;
+enum_default!(H5D_mpio_actual_chunk_opt_mode_t,
+              H5D_mpio_actual_chunk_opt_mode_t::H5D_MPIO_NO_CHUNK_OPTIMIZATION);
 
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]
@@ -85,6 +88,8 @@ pub enum H5D_mpio_actual_io_mode_t {
     H5D_MPIO_CHUNK_MIXED = 0x1 | 0x2,
     H5D_MPIO_CONTIGUOUS_COLLECTIVE = 0x4,
 }
+pub use self::H5D_mpio_actual_io_mode_t::*;
+enum_default!(H5D_mpio_actual_io_mode_t, H5D_mpio_actual_io_mode_t::H5D_MPIO_NO_COLLECTIVE);
 
 extern "C" {
     pub fn H5Pcreate_class(parent: hid_t, name: *const c_char, cls_create: H5P_cls_create_func_t,

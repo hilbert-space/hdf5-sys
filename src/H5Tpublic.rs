@@ -1,4 +1,5 @@
 use libc::{c_char, c_int, c_uint, c_void, size_t};
+use std::ptr;
 
 use H5Ipublic::hid_t;
 use H5public::{herr_t, hsize_t, htri_t, hbool_t};
@@ -21,6 +22,7 @@ pub enum H5T_class_t {
     H5T_NCLASSES,
 }
 pub use self::H5T_class_t::*;
+enum_default!(H5T_class_t, H5T_class_t::H5T_NO_CLASS);
 
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]
@@ -33,6 +35,7 @@ pub enum H5T_order_t {
     H5T_ORDER_NONE = 4,
 }
 pub use self::H5T_order_t::*;
+enum_default!(H5T_order_t, H5T_order_t::H5T_ORDER_ERROR);
 
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]
@@ -43,6 +46,7 @@ pub enum H5T_sign_t {
     H5T_NSGN = 2,
 }
 pub use self::H5T_sign_t::*;
+enum_default!(H5T_sign_t, H5T_sign_t::H5T_SGN_ERROR);
 
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]
@@ -53,6 +57,7 @@ pub enum H5T_norm_t {
     H5T_NORM_NONE = 2,
 }
 pub use self::H5T_norm_t::*;
+enum_default!(H5T_norm_t, H5T_norm_t::H5T_NORM_ERROR);
 
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]
@@ -76,6 +81,7 @@ pub enum H5T_cset_t {
     H5T_CSET_RESERVED_15 = 15,
 }
 pub use self::H5T_cset_t::*;
+enum_default!(H5T_cset_t, H5T_cset_t::H5T_CSET_ERROR);
 
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]
@@ -99,6 +105,7 @@ pub enum H5T_str_t {
     H5T_STR_RESERVED_15 = 15,
 }
 pub use self::H5T_str_t::*;
+enum_default!(H5T_str_t, H5T_str_t::H5T_STR_ERROR);
 
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]
@@ -110,6 +117,7 @@ pub enum H5T_pad_t {
     H5T_NPAD = 3,
 }
 pub use self::H5T_pad_t::*;
+enum_default!(H5T_pad_t, H5T_pad_t::H5T_PAD_ERROR);
 
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]
@@ -119,6 +127,7 @@ pub enum H5T_cmd_t {
     H5T_CONV_FREE = 2,
 }
 pub use self::H5T_cmd_t::*;
+enum_default!(H5T_cmd_t, H5T_cmd_t::H5T_CONV_INIT);
 
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]
@@ -128,14 +137,28 @@ pub enum H5T_bkg_t {
     H5T_BKG_YES = 2,
 }
 pub use self::H5T_bkg_t::*;
+enum_default!(H5T_bkg_t, H5T_bkg_t::H5T_BKG_NO);
 
+#[derive(Debug)]
 #[repr(C)]
 pub struct H5T_cdata_t {
-    command: H5T_cmd_t,
-    need_bkg: H5T_bkg_t,
-    recalc: hbool_t,
-    priv_data: *const c_void,
+    pub command: H5T_cmd_t,
+    pub need_bkg: H5T_bkg_t,
+    pub recalc: hbool_t,
+    pub priv_data: *const c_void,
 }
+
+impl Default for H5T_cdata_t {
+    fn default() -> H5T_cdata_t {
+        H5T_cdata_t {
+            command: H5T_cmd_t::default(),
+            need_bkg: H5T_bkg_t::default(),
+            recalc: 0,
+            priv_data: ptr::null(),
+        }
+    }
+}
+new_as_default!(H5T_cdata_t);
 
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]
@@ -145,6 +168,7 @@ pub enum H5T_pers_t {
     H5T_PERS_SOFT = 1,
 }
 pub use self::H5T_pers_t::*;
+enum_default!(H5T_pers_t, H5T_pers_t::H5T_PERS_DONTCARE);
 
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]
@@ -154,6 +178,7 @@ pub enum H5T_direction_t {
     H5T_DIR_DESCEND = 2,
 }
 pub use self::H5T_direction_t::*;
+enum_default!(H5T_direction_t, H5T_direction_t::H5T_DIR_DEFAULT);
 
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]
@@ -167,6 +192,7 @@ pub enum H5T_conv_except_t {
     H5T_CONV_EXCEPT_NAN = 6,
 }
 pub use self::H5T_conv_except_t::*;
+enum_default!(H5T_conv_except_t, H5T_conv_except_t::H5T_CONV_EXCEPT_RANGE_HI);
 
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]
@@ -176,6 +202,7 @@ pub enum H5T_conv_ret_t {
     H5T_CONV_HANDLED = 1,
 }
 pub use self::H5T_conv_ret_t::*;
+enum_default!(H5T_conv_ret_t, H5T_conv_ret_t::H5T_CONV_ABORT);
 
 pub type H5T_conv_t = extern "C" fn(hid_t, hid_t, *mut H5T_cdata_t, size_t, size_t, size_t,
                                     *mut c_void, *mut c_void, hid_t) -> herr_t;
@@ -261,7 +288,7 @@ extern "C" {
     pub fn H5Tget_member_value(dtype_id: hid_t, membno: c_uint, value: *mut c_void) -> herr_t;
     pub fn H5Tget_cset(dtype_id: hid_t) -> H5T_cset_t;
     pub fn H5Tis_variable_str(dtype_id: hid_t) -> htri_t;
-    pub fn H5Tget_native_dtype(dtype_id: hid_t, direction: H5T_direction_t) -> hid_t;
+    pub fn H5Tget_native_type(dtype_id: hid_t, direction: H5T_direction_t) -> hid_t;
     pub fn H5Tset_size(dtype_id: hid_t, size: size_t) -> herr_t;
     pub fn H5Tset_order(dtype_id: hid_t, order: H5T_order_t) -> herr_t;
     pub fn H5Tset_precision(dtype_id: hid_t, prec: size_t) -> herr_t;
