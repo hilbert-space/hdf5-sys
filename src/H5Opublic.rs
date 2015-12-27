@@ -13,51 +13,62 @@ pub enum H5O_type_t {
     H5O_TYPE_NTYPES,
 }
 pub use self::H5O_type_t::*;
+enum_default!(H5O_type_t, H5O_type_t::H5O_TYPE_UNKNOWN);
 
+#[derive(Default, Debug)]
 #[repr(C)]
-struct H5O_hdr_info_space_t {
-    total: hsize_t,
-    meta: hsize_t,
-    mesg: hsize_t,
-    free: hsize_t,
+pub struct H5O_hdr_info_space_t {
+    pub total: hsize_t,
+    pub meta: hsize_t,
+    pub mesg: hsize_t,
+    pub free: hsize_t,
 }
+new_as_default!(H5O_hdr_info_space_t);
 
+#[derive(Default, Debug)]
 #[repr(C)]
-struct H5O_hdr_info_mesg_t {
-    present: u64,
-    shared: u64,
+pub struct H5O_hdr_info_mesg_t {
+    pub present: u64,
+    pub shared: u64,
 }
+new_as_default!(H5O_hdr_info_mesg_t);
 
+#[derive(Default, Debug)]
 #[repr(C)]
 pub struct H5O_hdr_info_t {
-    version: c_uint,
-    nmesgs: c_uint,
-    nchunks: c_uint,
-    flags: c_uint,
-    space: H5O_hdr_info_space_t,
-    mesg: H5O_hdr_info_mesg_t,
+    pub version: c_uint,
+    pub nmesgs: c_uint,
+    pub nchunks: c_uint,
+    pub flags: c_uint,
+    pub space: H5O_hdr_info_space_t,
+    pub mesg: H5O_hdr_info_mesg_t,
 }
+new_as_default!(H5O_hdr_info_t);
 
+#[derive(Default, Debug)]
 #[repr(C)]
-struct H5O_info_meta_size_t {
-    obj: H5_ih_info_t,
-    attr: H5_ih_info_t,
+pub struct H5O_info_meta_size_t {
+    pub obj: H5_ih_info_t,
+    pub attr: H5_ih_info_t,
 }
+new_as_default!(H5O_info_meta_size_t);
 
+#[derive(Default, Debug)]
 #[repr(C)]
 pub struct H5O_info_t {
-    fileno: c_ulong,
-    addr: haddr_t,
-    info_type: H5O_type_t,
-    rc: c_uint,
-    atime: time_t,
-    mtime: time_t,
-    ctime: time_t,
-    btime: time_t,
-    num_attrs: hsize_t,
-    hdr: H5O_hdr_info_t,
-    meta_size: H5O_info_meta_size_t,
+    pub fileno: c_ulong,
+    pub addr: haddr_t,
+    pub info_type: H5O_type_t,
+    pub rc: c_uint,
+    pub atime: time_t,
+    pub mtime: time_t,
+    pub ctime: time_t,
+    pub btime: time_t,
+    pub num_attrs: hsize_t,
+    pub hdr: H5O_hdr_info_t,
+    pub meta_size: H5O_info_meta_size_t,
 }
+new_as_default!(H5O_info_t);
 
 pub type H5O_msg_crt_idx_t = u32;
 
@@ -72,6 +83,7 @@ pub enum H5O_mcdt_search_ret_t {
     H5O_MCDT_SEARCH_STOP,
 }
 pub use self::H5O_mcdt_search_ret_t::*;
+enum_default!(H5O_mcdt_search_ret_t, H5O_mcdt_search_ret_t::H5O_MCDT_SEARCH_ERROR);
 
 pub type H5O_mcdt_search_cb_t = extern "C" fn(*mut c_void) -> H5O_mcdt_search_ret_t;
 

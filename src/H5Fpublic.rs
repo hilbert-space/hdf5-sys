@@ -18,12 +18,15 @@ pub enum H5F_scope_t {
     H5F_SCOPE_GLOBAL = 1,
 }
 pub use self::H5F_scope_t::*;
+enum_default!(H5F_scope_t, H5F_scope_t::H5F_SCOPE_LOCAL);
 
+#[derive(Default, Debug)]
 #[repr(C)]
 struct H5F_info_sohm_t {
     hdr_size: hsize_t,
     msgs_info: H5_ih_info_t,
 }
+new_as_default!(H5F_info_sohm_t);
 
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]
@@ -34,14 +37,16 @@ pub enum H5F_close_degree_t {
     H5F_CLOSE_STRONG = 3,
 }
 pub use self::H5F_close_degree_t::*;
+enum_default!(H5F_close_degree_t, H5F_close_degree_t::H5F_CLOSE_DEFAULT);
 
+#[derive(Default, Debug)]
 #[repr(C)]
 pub struct H5F_info_t {
     super_ext_size: hsize_t,
     sohm: H5F_info_sohm_t,
 }
+new_as_default!(H5F_info_t);
 
-#[allow(dead_code)] // TODO: Remove the attribute when stable > 1.5.
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]
 pub enum H5F_mem_t {
@@ -56,6 +61,7 @@ pub enum H5F_mem_t {
     H5FD_MEM_NTYPES,
 }
 pub use self::H5F_mem_t::*;
+enum_default!(H5F_mem_t, H5F_mem_t::H5FD_MEM_NOLIST);
 
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]
@@ -64,6 +70,7 @@ pub enum H5F_libver_t {
     H5F_LIBVER_LATEST,
 }
 pub use self::H5F_libver_t::*;
+enum_default!(H5F_libver_t, H5F_libver_t::H5F_LIBVER_EARLIEST);
 
 extern "C" {
     pub fn H5Fcreate(filename: *const c_char, flags: c_uint, create_plist: hid_t,

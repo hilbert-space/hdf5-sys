@@ -2,6 +2,7 @@ use libc::{FILE, c_char, c_void, c_uint, size_t, ssize_t};
 
 use H5Ipublic::hid_t;
 use H5public::herr_t;
+use std::ptr;
 
 pub type H5E_major_t = hid_t;
 pub type H5E_minor_t = hid_t;
@@ -16,6 +17,7 @@ pub enum H5E_type_t {
     H5E_MINOR,
 }
 pub use self::H5E_type_t::*;
+enum_default!(H5E_type_t, H5E_type_t::H5E_MAJOR);
 
 #[repr(C)]
 pub struct H5E_error2_t {
@@ -49,6 +51,7 @@ pub enum H5E_direction_t {
     H5E_WALK_DOWNWARD = 1,
 }
 pub use self::H5E_direction_t::*;
+enum_default!(H5E_direction_t, H5E_direction_t::H5E_WALK_UPWARD);
 
 extern "C" {
     pub fn H5Eauto_is_v2(estack_id: hid_t, is_tack: *mut c_uint) -> herr_t;

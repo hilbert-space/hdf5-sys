@@ -17,6 +17,7 @@ pub enum H5D_layout_t {
     H5D_NLAYOUTS = 3,
 }
 pub use self::H5D_layout_t::*;
+enum_default!(H5D_layout_t, H5D_layout_t::H5D_LAYOUT_ERROR);
 
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]
@@ -28,6 +29,7 @@ pub enum H5D_alloc_time_t {
     H5D_ALLOC_TIME_INCR = 3,
 }
 pub use self::H5D_alloc_time_t::*;
+enum_default!(H5D_alloc_time_t, H5D_alloc_time_t::H5D_ALLOC_TIME_ERROR);
 
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]
@@ -38,6 +40,7 @@ pub enum H5D_space_status_t {
     H5D_SPACE_STATUS_ALLOCATED = 2,
 }
 pub use self::H5D_space_status_t::*;
+enum_default!(H5D_space_status_t, H5D_space_status_t::H5D_SPACE_STATUS_ERROR);
 
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]
@@ -48,6 +51,7 @@ pub enum H5D_fill_time_t {
     H5D_FILL_TIME_IFSET = 2,
 }
 pub use self::H5D_fill_time_t::*;
+enum_default!(H5D_fill_time_t, H5D_fill_time_t::H5D_FILL_TIME_ERROR);
 
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]
@@ -58,6 +62,7 @@ pub enum H5D_fill_value_t {
     H5D_FILL_VALUE_USER_DEFINED = 2,
 }
 pub use self::H5D_fill_value_t::*;
+enum_default!(H5D_fill_value_t, H5D_fill_value_t::H5D_FILL_VALUE_ERROR);
 
 extern "C" {
     pub fn H5Dcreate2(loc_id: hid_t, name: *const c_char, type_id: hid_t, space_id: hid_t,

@@ -12,6 +12,7 @@ pub enum H5Z_SO_scale_type_t {
     H5Z_SO_INT = 2,
 }
 pub use self::H5Z_SO_scale_type_t::*;
+enum_default!(H5Z_SO_scale_type_t, H5Z_SO_scale_type_t::H5Z_SO_FLOAT_DSCALE);
 
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]
@@ -22,6 +23,7 @@ pub enum H5Z_EDC_t {
     H5Z_NO_EDC = 2,
 }
 pub use self::H5Z_EDC_t::*;
+enum_default!(H5Z_EDC_t, H5Z_EDC_t::H5Z_ERROR_EDC);
 
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]
@@ -32,6 +34,7 @@ pub enum H5Z_cb_return_t {
     H5Z_CB_NO = 2,
 }
 pub use self::H5Z_cb_return_t::*;
+enum_default!(H5Z_cb_return_t, H5Z_cb_return_t::H5Z_CB_ERROR);
 
 pub type H5Z_filter_func_t = extern "C" fn(H5Z_filter_t,*mut c_void, size_t, *mut c_void)
                                            -> H5Z_cb_return_t;
