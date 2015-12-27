@@ -6,10 +6,7 @@ use H5public::herr_t;
 pub type H5E_major_t = hid_t;
 pub type H5E_minor_t = hid_t;
 
-pub type H5E_walk1_t = extern "C" fn(c_uint, *const H5E_error1_t, *const c_void);
 pub type H5E_walk2_t = extern "C" fn(c_uint, *const H5E_error2_t, *const c_void);
-
-pub type H5E_auto1_t = extern "C" fn(*const c_void);
 pub type H5E_auto2_t = extern "C" fn(hid_t, *const c_void);
 
 #[derive(Clone, Copy, Debug)]
@@ -21,24 +18,28 @@ pub enum H5E_type_t {
 pub use self::H5E_type_t::*;
 
 #[repr(C)]
-pub struct H5E_error1_t {
-    maj_num: H5E_major_t,
-    min_num: H5E_minor_t,
-    func_name: *const c_char,
-    file_name: *const c_char,
-    line: c_uint,
-    desc: *const c_char,
+pub struct H5E_error2_t {
+    pub cls_id: hid_t,
+    pub maj_num: hid_t,
+    pub min_num: hid_t,
+    pub line: c_uint,
+    pub func_name: *const c_char,
+    pub file_name: *const c_char,
+    pub desc: *const c_char,
 }
 
-#[repr(C)]
-pub struct H5E_error2_t {
-    cls_id: hid_t,
-    maj_num: hid_t,
-    min_num: hid_t,
-    line: c_uint,
-    func_name: *const c_char,
-    file_name: *const c_char,
-    desc: *const c_char,
+impl H5E_error2_t {
+    pub fn new() -> H5E_error2_t {
+        H5E_error2_t {
+            cls_id: 0,
+            maj_num: 0,
+            min_num: 0,
+            line: 0,
+            func_name: ptr::null(),
+            file_name: ptr::null(),
+            desc: ptr::null(),
+        }
+    }
 }
 
 #[derive(Clone, Copy, Debug)]
