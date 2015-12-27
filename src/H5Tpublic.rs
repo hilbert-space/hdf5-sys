@@ -151,8 +151,8 @@ pub struct H5T_cdata_t {
 impl Default for H5T_cdata_t {
     fn default() -> H5T_cdata_t {
         H5T_cdata_t {
-            command: H5T_cmd_t::default(),
-            need_bkg: H5T_bkg_t::default(),
+            command: Default::default(),
+            need_bkg: Default::default(),
             recalc: 0,
             priv_data: ptr::null(),
         }
