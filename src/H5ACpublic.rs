@@ -37,8 +37,8 @@ pub struct H5AC_cache_config_t {
     pub metadata_write_strategy: c_int,
 }
 
-impl H5AC_cache_config_t {
-    pub fn new() -> H5AC_cache_config_t {
+impl Default for H5AC_cache_config_t {
+    fn default() -> H5AC_cache_config_t {
         H5AC_cache_config_t {
             version: 0,
             rpt_fcn_enabled: 0,
@@ -74,3 +74,4 @@ impl H5AC_cache_config_t {
         }
     }
 }
+new_as_default!(H5AC_cache_config_t);

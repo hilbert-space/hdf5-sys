@@ -30,8 +30,8 @@ pub struct H5E_error2_t {
     pub desc: *const c_char,
 }
 
-impl H5E_error2_t {
-    pub fn new() -> H5E_error2_t {
+impl Default for H5E_error2_t {
+    fn default() -> H5E_error2_t {
         H5E_error2_t {
             cls_id: 0,
             maj_num: 0,
@@ -43,6 +43,7 @@ impl H5E_error2_t {
         }
     }
 }
+new_as_default!(H5E_error2_t);
 
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]

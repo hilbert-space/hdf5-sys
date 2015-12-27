@@ -148,8 +148,8 @@ pub struct H5T_cdata_t {
     pub priv_data: *const c_void,
 }
 
-impl H5T_cdata_t {
-    pub fn new() -> H5T_cdata_t {
+impl Default for H5T_cdata_t {
+    fn default() -> H5T_cdata_t {
         H5T_cdata_t {
             command: H5T_cmd_t::default(),
             need_bkg: H5T_bkg_t::default(),
@@ -158,6 +158,7 @@ impl H5T_cdata_t {
         }
     }
 }
+new_as_default!(H5T_cdata_t);
 
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]
