@@ -36,7 +36,6 @@ enum_default!(H5S_seloper_t, H5S_seloper_t::H5S_SELECT_NOOP);
 
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]
-// Note: This type does not end with _t (it is not a typo)
 pub enum H5S_sel_type {
     H5S_SEL_ERROR = -1,
     H5S_SEL_NONE = 0,

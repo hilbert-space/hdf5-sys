@@ -1,8 +1,8 @@
 use libc::{FILE, c_char, c_void, c_uint, size_t, ssize_t};
+use std::ptr;
 
 use H5Ipublic::hid_t;
 use H5public::herr_t;
-use std::ptr;
 
 pub type H5E_major_t = hid_t;
 pub type H5E_minor_t = hid_t;
