@@ -22,7 +22,7 @@ enum_default!(H5F_scope_t, H5F_scope_t::H5F_SCOPE_LOCAL);
 
 #[derive(Default, Debug)]
 #[repr(C)]
-struct H5F_info_sohm_t {
+pub struct H5F_info_sohm_t {
     hdr_size: hsize_t,
     msgs_info: H5_ih_info_t,
 }

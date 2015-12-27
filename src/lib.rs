@@ -15,7 +15,6 @@ macro_rules! new_as_default {
     ($name:ident) => (
         impl $name {
             #[inline]
-            #[allow(dead_code)]
             pub fn new() -> $name {
                 Default::default()
             }
