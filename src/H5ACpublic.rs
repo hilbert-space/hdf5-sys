@@ -38,6 +38,7 @@ pub struct H5AC_cache_config_t {
 }
 
 impl Default for H5AC_cache_config_t {
+    #[inline]
     fn default() -> H5AC_cache_config_t {
         H5AC_cache_config_t {
             version: 0,

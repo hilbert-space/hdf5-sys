@@ -31,6 +31,7 @@ pub struct H5E_error2_t {
 }
 
 impl Default for H5E_error2_t {
+    #[inline]
     fn default() -> H5E_error2_t {
         H5E_error2_t {
             cls_id: 0,

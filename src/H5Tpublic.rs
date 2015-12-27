@@ -149,6 +149,7 @@ pub struct H5T_cdata_t {
 }
 
 impl Default for H5T_cdata_t {
+    #[inline]
     fn default() -> H5T_cdata_t {
         H5T_cdata_t {
             command: Default::default(),
