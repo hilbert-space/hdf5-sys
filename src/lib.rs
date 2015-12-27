@@ -17,7 +17,7 @@ macro_rules! new_as_default {
             #[inline]
             #[allow(dead_code)]
             pub fn new() -> $name {
-                $name { ..Default::default() }
+                Default::default()
             }
         }
     )
