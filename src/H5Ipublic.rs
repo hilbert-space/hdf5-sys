@@ -28,7 +28,6 @@ pub enum H5I_type_t {
     H5I_NTYPES,
 }
 pub use self::H5I_type_t::*;
-enum_default!(H5I_type_t, H5I_type_t::H5I_UNINIT);
 
 extern "C" {
     pub fn H5Iget_file_id(obj_id: hid_t) -> hid_t;

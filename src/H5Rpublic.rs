@@ -13,7 +13,6 @@ pub enum H5R_type_t {
     H5R_MAXTYPE,
 }
 pub use self::H5R_type_t::*;
-enum_default!(H5R_type_t, H5R_type_t::H5R_BADTYPE);
 
 extern "C" {
     pub fn H5Rcreate(reference: *mut c_void, loc_id: hid_t, name: *const c_char,

@@ -22,9 +22,8 @@ pub enum H5L_type_t {
     H5L_TYPE_MAX = 255,
 }
 pub use self::H5L_type_t::*;
-enum_default!(H5L_type_t, H5L_type_t::H5L_TYPE_ERROR);
 
-#[derive(Default, Debug)]
+#[derive(Debug)]
 #[repr(C)]
 pub struct H5L_info_t {
     pub link_type: H5L_type_t,
@@ -33,7 +32,6 @@ pub struct H5L_info_t {
     pub cset: H5T_cset_t,
     pub address: haddr_t, // TODO: Change to the union { address: haddr_t, val_size: size_t }.
 }
-new_as_default!(H5L_info_t);
 
 #[derive(Debug)]
 #[repr(C)]

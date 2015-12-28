@@ -12,9 +12,8 @@ pub enum H5G_storage_type_t {
     H5G_STORAGE_TYPE_DENSE,
 }
 pub use self::H5G_storage_type_t::*;
-enum_default!(H5G_storage_type_t, H5G_storage_type_t::H5G_STORAGE_TYPE_UNKNOWN);
 
-#[derive(Default, Debug)]
+#[derive(Debug)]
 #[repr(C)]
 pub struct H5G_info_t {
     pub storage_type: H5G_storage_type_t,
@@ -22,7 +21,6 @@ pub struct H5G_info_t {
     pub max_corder: i64,
     pub mounted: hbool_t,
 }
-new_as_default!(H5G_info_t);
 
 extern "C" {
     pub fn H5Gcreate2(loc_id: hid_t, name: *const c_char, lcpl_id: hid_t, gcpl_id: hid_t,

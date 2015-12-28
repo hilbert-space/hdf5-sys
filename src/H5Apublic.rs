@@ -5,7 +5,7 @@ use H5Opublic::H5O_msg_crt_idx_t;
 use H5Tpublic::H5T_cset_t;
 use H5public::{H5_index_t, H5_iter_order_t, hbool_t, herr_t, hsize_t, htri_t};
 
-#[derive(Default, Debug)]
+#[derive(Debug)]
 #[repr(C)]
 pub struct H5A_info_t {
     pub corder_valid: hbool_t,
@@ -13,7 +13,6 @@ pub struct H5A_info_t {
     pub cset: H5T_cset_t,
     pub data_size: hsize_t,
 }
-new_as_default!(H5A_info_t);
 
 pub type H5A_operator2_t = extern "C" fn(hid_t, *const c_char, *const H5A_info_t, *mut c_void)
                                          -> herr_t;

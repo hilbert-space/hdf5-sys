@@ -18,7 +18,6 @@ pub enum H5FD_file_image_op_t {
     H5FD_FILE_IMAGE_OP_FILE_CLOSE,
 }
 pub use self::H5FD_file_image_op_t::*;
-enum_default!(H5FD_file_image_op_t, H5FD_file_image_op_t::H5FD_FILE_IMAGE_OP_NO_OP);
 
 type H5FD_file_image_callbacks_image_malloc_func = extern "C" fn(size_t, H5FD_file_image_op_t,
                                                                  *mut c_void) -> *const c_void;

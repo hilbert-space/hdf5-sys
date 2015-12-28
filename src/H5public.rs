@@ -21,7 +21,6 @@ pub enum H5_iter_order_t {
     H5_ITER_N,
 }
 pub use self::H5_iter_order_t::*;
-enum_default!(H5_iter_order_t, H5_iter_order_t::H5_ITER_UNKNOWN);
 
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]
@@ -32,15 +31,13 @@ pub enum H5_index_t {
     H5_INDEX_N,
 }
 pub use self::H5_index_t::*;
-enum_default!(H5_index_t, H5_index_t::H5_INDEX_UNKNOWN);
 
-#[derive(Default, Debug)]
+#[derive(Debug)]
 #[repr(C)]
 pub struct H5_ih_info_t {
     pub index_size: hsize_t,
     pub heap_size: hsize_t,
 }
-new_as_default!(H5_ih_info_t);
 
 extern "C" {
     pub fn H5open() -> herr_t;
