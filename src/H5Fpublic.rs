@@ -43,6 +43,7 @@ pub struct H5F_info_t {
     sohm: H5F_info_sohm_t,
 }
 
+#[allow(dead_code)] // TODO: Remove the attribute when stable > 1.5.
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]
 pub enum H5F_mem_t {
