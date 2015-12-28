@@ -1,6 +1,6 @@
 [package]
 name = "hdf5-sys"
-version = "0.3.1"
+version = "0.3.2"
 authors = [
   "Gustav Larsson <gustav.m.larsson@gmail.com>",
   "Ivan Ukhov <ivan.ukhov@gmail.com>",
