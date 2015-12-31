@@ -1,3 +1,7 @@
+//! Bindings to [HDF5][1].
+//!
+//! [1]: http://www.hdfgroup.org/HDF5
+
 #![allow(non_camel_case_types, non_snake_case)]
 
 extern crate libc;
